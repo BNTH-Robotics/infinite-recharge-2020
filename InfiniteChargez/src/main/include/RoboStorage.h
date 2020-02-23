@@ -7,15 +7,15 @@
 class RoboStorage
 {
 public:
-    RoboStorage(frc::SpeedController &intakeMotorLeft, frc::SpeedController &intakeMotorRight):
-      m_intakeLeft{&intakeMotorLeft}, m_intakeRight{&intakeMotorRight} {}
+    RoboStorage(frc::SpeedController &intakeMotor, frc::SpeedController &tankMotor):
+      m_intakeMotor{&intakeMotor}, m_tankMotor{&tankMotor} {}
     void setIntakeSpeed()
     {}
     //void raise()
     //void lower()
     //void setAngle();
 private:
-  frc::SpeedController* m_intakeLeft;
-  frc::SpeedController* m_intakeRight;
+  frc::SpeedController* m_intakeMotor;
+  frc::SpeedController* m_tankMotor;
 };
 #endif
