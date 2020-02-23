@@ -17,6 +17,7 @@
 
 #include <iostream>
 #include <thread>
+#include <cassert>
 void Robot::OdometryTests()
 {
   //std::cout << "Built Int Acceleration X: " << leAccelerometer.GetX() << " Y: " << leAccelerometer.GetY() << '\n';
@@ -63,6 +64,7 @@ void Robot::RobotPeriodic()
 void Robot::AutonomousInit()
 {
   m_recordReadFile.open(inputRecordFileName);
+  assert(m_recordReadFile.is_open());
 
   m_leRecordScribe.loadRecording(m_recordReadFile);
   m_leRecordScribe.playLoadedRecordingToAndExec(*this);
@@ -96,7 +98,7 @@ void Robot::AutonomousPeriodic()
 
 void Robot::TeleopInit()
 {
-  m_recordFile.open(recordBufferName);
+  m_recordFile.open(inputRecordFileName);
   leRoboData.initSnap();
 }
 
@@ -111,6 +113,8 @@ void Robot::TeleopPeriodic()
   checkAndExec();
 
   leInputHandler = leController;
+
+  recordActionsExec(leInputHandler, delta);
   //std::string snap = leInputHandler.getSnapshot();
   //leInputHandler = snap;
 }

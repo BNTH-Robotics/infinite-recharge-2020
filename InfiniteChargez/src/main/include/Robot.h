@@ -42,7 +42,6 @@ class Robot : public frc::TimedRobot, public utilities::HandlesChecksAndExecs
 {
 private:
   const std::string inputRecordFileName{"/home/lvuser/InputRecord.rcd"};
-  const std::string recordBufferName{"/home/lvuser/InputRecordBuffer.rcd"};
   std::ofstream m_recordFile{};
   std::ifstream m_recordReadFile{};
   bool tankMode{false};
@@ -110,7 +109,6 @@ private:
   private:
   bool isRecording{false}; //Really hacky, will remain until the deeper WPLIB api documentation can be discovered *Indiana Jones Music*
   bool recordingEnabled{true};
-  std::ofstream recordingBuffer;
   long double meanDelta{0};
   public:
   void TestPeriodic() override;

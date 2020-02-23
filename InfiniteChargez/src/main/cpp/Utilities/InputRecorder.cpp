@@ -4,6 +4,7 @@
 #include <string>
 #include <thread>
 
+#include <iostream>
 namespace utilities
 {
     void InputRecorder::designateFile(std::ofstream &recordingFile)
@@ -22,6 +23,7 @@ namespace utilities
 
     void InputRecorder::stopRecording(std::chrono::duration<double> delta)
     {
+        std::cout << "Hi" << '\n';
         std::string line{""};
 
         *m_recording << delta.count() << '\n';

@@ -18,8 +18,8 @@ public:
     void setMovementMap(utilities::Pair2D<double> &&movementMap)
     {
 
-        m_rightMotors->Set(std::clamp(movementMap.y - movementMap.x, -1.0, 1.0));
-        m_leftMotors->Set(std::clamp(movementMap.y + movementMap.x, -1.0, 1.0));//FIGURE OUT WHY A NEGATIVE IS NEEDED!!!!
+        m_leftMotors->Set(std::clamp(movementMap.y - movementMap.x, -1.0, 1.0));
+        m_rightMotors->Set(std::clamp(movementMap.y + movementMap.x, -1.0, 1.0));//FIGURE OUT WHY A NEGATIVE IS NEEDED!!!!
     };
     //void setForwardMovement(double forwards);
     //void setRotationMovement(double clockwise);
