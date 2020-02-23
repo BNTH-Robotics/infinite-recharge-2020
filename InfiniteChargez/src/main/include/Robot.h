@@ -89,7 +89,7 @@ private:
      static constexpr int portDriveBackLeft{2};
      static constexpr int portDriveBackRight{4};
      static constexpr int portIntake{5};
-     static constexpr int portStorage{7};
+     static constexpr int portTank{7};
      static constexpr int portHook{8};
 
 
@@ -129,7 +129,7 @@ private:
 
      intakeMotor_t intakeMotor{portIntake};
 
-     storageMotor_t storageMotor{portStorage};
+     storageMotor_t tankMotor{portTank};
 
      hookMotor_t hookMotor{portHook};
      //Non-motor components
