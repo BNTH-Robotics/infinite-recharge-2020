@@ -7,35 +7,30 @@
 
 #include "Robot.h"
 
-#include "ControlCheckExec.h"
-#include <units/units.h>
-#include <frc/geometry/Rotation2d.h>
-#include <frc/geometry/Pose2d.h>
 #include <frc/BuiltInAccelerometer.h>
-#include <iostream>
-#include <thread>
 #include <frc/Filesystem.h>
-#include "FileConstants.h"
-
+#include <frc/geometry/Pose2d.h>
+#include <frc/geometry/Rotation2d.h>
 #include <frc/smartdashboard/SmartDashboard.h>
 
+#include <units/units.h>
+
+#include <iostream>
+#include <thread>
 void Robot::OdometryTests()
 {
   //std::cout << "Built Int Acceleration X: " << leAccelerometer.GetX() << " Y: " << leAccelerometer.GetY() << '\n';
   //std::cout << "Acceleration X: " << leGyroscope.GetAccelInstantX() << " Y: " << leGyroscope.GetAccelInstantY() << '\n';
   //std::cout << "Z heading: " << leGyroscope.GetGyroAngleZ() << '\n';
   //std::cout << leDifferentialOdometer.GetPose().Translation().X() << '\n';
-
 }
 
-Robot::Robot():
-  frc::TimedRobot{5_ms}, leAccelerometer{frc::BuiltInAccelerometer::kRange_8G},
-  lastSnapshot{clock_t::now()}
+Robot::Robot() : frc::TimedRobot{5_ms} 
+                 
 {
-
 }
 
-void Robot::RobotInit() 
+void Robot::RobotInit()
 {
   m_chooser.SetDefaultOption(kAutoNameDefault, kAutoNameDefault);
   m_chooser.AddOption(kAutoNameCustom, kAutoNameCustom);
@@ -54,7 +49,6 @@ void Robot::RobotPeriodic()
 {
 }
 
-
 /**
  * This autonomous (along with the chooser code above) shows how to select
  * between different autonomous modes using the dashboard. The sendable chooser
@@ -66,30 +60,35 @@ void Robot::RobotPeriodic()
  * if-else structure below with additional strings. If using the SendableChooser
  * make sure to add them to the chooser code above as well.
  */
-void Robot::AutonomousInit() 
+void Robot::AutonomousInit()
 {
-  std::thread recording(executeRecording, this);
-  recording.detach();
+  m_recordReadFile.open(inputRecordFileName);
+
+  m_leRecordScribe.loadRecording(m_recordReadFile);
+  m_leRecordScribe.playLoadedRecordingToAndExec(*this);
 
   m_autoSelected = m_chooser.GetSelected();
   // m_autoSelected = SmartDashboard::GetString("Auto Selector",
   //     kAutoNameDefault);
   std::cout << "Auto selected: " << m_autoSelected << std::endl;
 
-  if (m_autoSelected == kAutoNameCustom) {
+  if (m_autoSelected == kAutoNameCustom)
+  {
     // Custom Auto goes here
-  } else {
+  }
+  else
+  {
     // Default Auto goes here
   }
 }
 
-void Robot::AutonomousPeriodic() 
+void Robot::AutonomousPeriodic()
 {
-  if (m_autoSelected == kAutoNameCustom) 
+  if (m_autoSelected == kAutoNameCustom)
   {
     // Custom Auto goes here
-  } 
-  else 
+  }
+  else
   {
     // Default Auto goes here
   }
@@ -97,24 +96,23 @@ void Robot::AutonomousPeriodic()
 
 void Robot::TeleopInit()
 {
-  recordingBuffer.open(recordBufferName);
+  m_recordFile.open(recordBufferName);
+  leRoboData.initSnap();
 }
 
 void Robot::TeleopPeriodic()
-{ 
-  std::cout << leController.GetStartButton() << '\n';
-  duration_t delta {std::chrono::duration_cast<duration_t>(clock_t::now() - lastSnapshot)};
-  Robot::updatePos(delta);
-  lastSnapshot = clock_t::now();
+{
+  duration_t delta = leRoboData.calcAndGetTimeDelta();
+  //std::cout << leController.GetStartButton() << '\n';
+  //REORDER DELTA CALCS
+
+  leRoboData.updatePos(delta);
   OdometryTests();
+  checkAndExec();
 
   leInputHandler = leController;
   //std::string snap = leInputHandler.getSnapshot();
   //leInputHandler = snap;
-  std::cout << leInputHandler.getSnapshot() << '\n';
-  checkAndExec(leInputHandler);
-  recordActionsExec(leInputHandler, delta, recordingBuffer);
-  
 }
 
 void Robot::TestPeriodic()
@@ -122,6 +120,10 @@ void Robot::TestPeriodic()
   OdometryTests();
 }
 
+
 #ifndef RUNNING_FRC_TESTS
-int main() { return frc::StartRobot<Robot>(); }
+int main()
+{
+  return frc::StartRobot<Robot>();
+}
 #endif

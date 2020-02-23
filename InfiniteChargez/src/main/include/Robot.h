@@ -12,6 +12,14 @@
 #include "XboxInputHandler.h"
 #include "Pair2D.h"
 
+#include "RoboData.h"
+#include "RoboDrive.h"
+#include "RoboHook.h"
+#include "RoboStorage.h"
+
+#include "InputRecordAndPlay.h"
+#include "HandlesChecksAndExecs.h"
+
 #include <string>
 #include <frc/kinematics/DifferentialDriveOdometry.h>
 #include <frc/geometry/Rotation2d.h>
@@ -30,11 +38,13 @@
 
 #include <fstream>
 
-class Robot : public frc::TimedRobot 
+class Robot : public frc::TimedRobot, public utilities::HandlesChecksAndExecs
 {
 private:
   const std::string inputRecordFileName{"/home/lvuser/InputRecord.rcd"};
   const std::string recordBufferName{"/home/lvuser/InputRecordBuffer.rcd"};
+  std::ofstream m_recordFile{};
+  std::ifstream m_recordReadFile{};
   bool tankMode{false};
   //Configuration constants will go here until a configuration system can be set up
   using joystick_t = frc::Joystick;
@@ -94,6 +104,9 @@ private:
   void AutonomousPeriodic() override;
   void TeleopInit() override;
   void TeleopPeriodic() override;
+  void checkAndExec();
+
+  utilities::InputHandler& getInputHandler() {return leInputHandler;}
   private:
   bool isRecording{false}; //Really hacky, will remain until the deeper WPLIB api documentation can be discovered *Indiana Jones Music*
   bool recordingEnabled{true};
@@ -102,8 +115,11 @@ private:
   public:
   void TestPeriodic() override;
  private:
-      //RobotDataPoints
-     frc::Pose2d leRobotPosition{};
+      //RobotDataPooints
+    RoboData leRoboData{leGyroscope, leAccelerometer};
+    RoboDrive leDrive{driveMotorsLeft, driveMotorsRight};
+    RoboStorage leStorage{intakeMotorLeft, intakeMotorRight};
+    RoboHook leHook{hookMotor};
 
      controller_t leController{controllerPort}; //Of epic dankness
      joystick_t leJoystickLeft{leJoystickLeftPort};
@@ -129,12 +145,11 @@ private:
     frc::SpeedControllerGroup driveMotorsRight{driveMotorFrontRight, driveMotorBackRight};
 
     //Recording Utilities
-    friend void executeRecording(Robot *robot);
+    utilities::InputRecordAndPlay m_leRecordScribe{};
     void recordActionsExec(utilities::XboxInputHandler &leInputHandler);
 
     //Input checking funcitons
-    void checkAndExec(handler_t &leInputHandler);
-    void recordActionsExec(utilities::XboxInputHandler &leInputHandler, duration_t delta, std::ofstream &recordBuffer);
+    void recordActionsExec(utilities::XboxInputHandler &leInputHandler, duration_t delta);
     void joystickPosition(utilities::XboxInputHandler::joystick_t &&joystickLeft, utilities::XboxInputHandler::joystick_t &&joystickRight);
     void buttonA();
     void buttonB();

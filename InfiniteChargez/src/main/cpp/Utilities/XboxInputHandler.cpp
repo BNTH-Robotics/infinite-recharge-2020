@@ -143,7 +143,7 @@ namespace utilities
         return snapshot;
     }
 
-    void XboxInputHandler::operator=(snapshot_t &snapshot)
+    void XboxInputHandler::operator=(const snapshot_t &snapshot)
     {
         std::size_t i{0};
         //Joystick
