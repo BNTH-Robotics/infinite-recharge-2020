@@ -105,8 +105,6 @@ void Robot::TeleopInit()
 void Robot::TeleopPeriodic()
 {
   duration_t delta = leRoboData.calcAndGetTimeDelta();
-  //std::cout << leController.GetStartButton() << '\n';
-  //REORDER DELTA CALCS
 
   leRoboData.updatePos(delta);
   OdometryTests();
@@ -115,8 +113,6 @@ void Robot::TeleopPeriodic()
   leInputHandler = leController;
 
   recordActionsExec(leInputHandler, delta);
-  //std::string snap = leInputHandler.getSnapshot();
-  //leInputHandler = snap;
 }
 
 void Robot::TestPeriodic()
