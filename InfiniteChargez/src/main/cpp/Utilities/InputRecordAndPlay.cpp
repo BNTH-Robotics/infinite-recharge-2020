@@ -30,6 +30,11 @@ void InputRecordAndPlay::snapFromAndWrite(HandlesChecksAndExecs *probablyARobot)
     m_recorder.snapFrom(probablyARobot);
 }
 
+void InputRecordAndPlay::snapFromAndWrite(HandlesChecksAndExecs *probablyARobot, std::chrono::duration<double> delta)
+{
+    m_recorder.snapFrom(probablyARobot, delta);
+}
+
 void InputRecordAndPlay::designateFile(std::ofstream &recordingFile)
 {
     m_recorder.designateFile(recordingFile);

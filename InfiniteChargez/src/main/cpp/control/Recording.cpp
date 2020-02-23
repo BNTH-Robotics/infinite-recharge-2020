@@ -30,7 +30,7 @@ void Robot::recordActionsExec(utilities::XboxInputHandler &leInputHandler, durat
     {
         std::cout << "recording" << '\n';
         meanDelta = (meanDelta + delta.count()) / 2;
-        m_leRecordScribe.snapFromAndWrite(this);
+        m_leRecordScribe.snapFromAndWrite(this, delta);
     }
     if (leInputHandler.getButtonXPressed())
     {
