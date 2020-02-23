@@ -115,7 +115,7 @@ private:
       //RobotDataPooints
     RoboData leRoboData{leGyroscope, leAccelerometer};
     RoboDrive leDrive{driveMotorsLeft, driveMotorsRight};
-    RoboStorage leStorage{intakeMotor, };
+    RoboStorage leStorage{intakeMotor, tankMotor};
     RoboHook leHook{hookMotor};
 
      controller_t leController{controllerPort}; //Of epic dankness
