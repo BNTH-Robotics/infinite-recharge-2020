@@ -88,8 +88,7 @@ private:
      static constexpr int portDriveFrontRight{3};
      static constexpr int portDriveBackLeft{2};
      static constexpr int portDriveBackRight{4};
-     static constexpr int portIntakeLeft{5};
-     static constexpr int portIntakeRight{6};
+     static constexpr int portIntake{5};
      static constexpr int portStorage{7};
      static constexpr int portHook{8};
 
@@ -116,7 +115,7 @@ private:
       //RobotDataPooints
     RoboData leRoboData{leGyroscope, leAccelerometer};
     RoboDrive leDrive{driveMotorsLeft, driveMotorsRight};
-    RoboStorage leStorage{intakeMotorLeft, intakeMotorRight};
+    RoboStorage leStorage{intakeMotor, };
     RoboHook leHook{hookMotor};
 
      controller_t leController{controllerPort}; //Of epic dankness
@@ -128,8 +127,7 @@ private:
      driveMotor_t driveMotorBackLeft{portDriveBackLeft};
      driveMotor_t driveMotorBackRight{portDriveBackRight};
 
-     intakeMotor_t intakeMotorLeft{portIntakeLeft};
-     intakeMotor_t intakeMotorRight{portIntakeRight};
+     intakeMotor_t intakeMotor{portIntake};
 
      storageMotor_t storageMotor{portStorage};
 
