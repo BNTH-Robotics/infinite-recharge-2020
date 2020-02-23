@@ -32,6 +32,8 @@ namespace utilities
         {
             *m_recording << line << '\n';
         }
+        
+      std::cout << "DONE RECORDING\n";
     }
 
 
