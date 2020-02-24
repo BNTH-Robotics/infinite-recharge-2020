@@ -24,7 +24,7 @@ namespace utilities
         //void stopLoadedRecording();
         void recordFromAndTo(HandlesChecksAndExecs &probablyARobot, std::ofstream &outputFile);
         void snapFromAndWrite(HandlesChecksAndExecs *probablyARobot);
-        void InputRecordAndPlay::snapFromAndWrite(HandlesChecksAndExecs *probablyARobot, std::chrono::duration<double> delta)
+        void snapFromAndWrite(HandlesChecksAndExecs *probablyARobot, std::chrono::duration<double> delta);
 
         //void stopRecording();
         void stopRecording(std::chrono::duration<double> &delta);
