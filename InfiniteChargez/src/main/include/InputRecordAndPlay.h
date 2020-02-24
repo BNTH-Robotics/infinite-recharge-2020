@@ -22,12 +22,15 @@ namespace utilities
         void playLoadedRecordingToAndExec(HandlesChecksAndExecs &probablyARobot);
         //void pauseLoadedRecording();
         //void stopLoadedRecording();
+        void recordFromAndTo(HandlesChecksAndExecs &probablyARobot, std::ofstream &outputFile, std::chrono::duration<double> delta);
         void recordFromAndTo(HandlesChecksAndExecs &probablyARobot, std::ofstream &outputFile);
+
         void snapFromAndWrite(HandlesChecksAndExecs *probablyARobot);
         void snapFromAndWrite(HandlesChecksAndExecs *probablyARobot, std::chrono::duration<double> delta);
 
         //void stopRecording();
         void stopRecording(std::chrono::duration<double> &delta);
+        void stopRecording();
 
     private:
     InputRecorder m_recorder{};
