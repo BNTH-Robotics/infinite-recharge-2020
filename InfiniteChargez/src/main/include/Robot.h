@@ -6,12 +6,16 @@
 /*----------------------------------------------------------------------------*/
 #ifndef YEET_LE_MOST_AMAZING_ROBOT_IN_THE_WORLD
 #define YEET_LE_MOST_AMAZING_ROBOT_IN_THE_WORLD
-#pragma once
-
-#include "HandlesChecksAndExecs.h"
-#include "InputRecordAndPlay.h"
 #include "XboxInputHandler.h"
 #include "Pair2D.h"
+
+#include "RoboData.h"
+#include "RoboDrive.h"
+#include "RoboHook.h"
+#include "RoboStorage.h"
+
+#include "InputRecordAndPlay.h"
+#include "HandlesChecksAndExecs.h"
 
 #include <adi/ADIS16448_IMU.h>
 
@@ -20,13 +24,11 @@
 #include <frc/BuiltInAccelerometer.h>
 #include <frc/drive/DifferentialDrive.h>
 #include <frc/geometry/Pose2d.h>
-#include <frc/geometry/Rotation2d.h>
-#include <frc/Joystick.h>
-#include <frc/kinematics/DifferentialDriveOdometry.h>
-#include <frc/smartdashboard/SendableChooser.h>
-#include <frc/SpeedControllerGroup.h>
 #include <frc/TimedRobot.h>
+#include <frc/SpeedControllerGroup.h>
+#include <frc/smartdashboard/SendableChooser.h>
 #include <frc/XboxController.h>
+
 
 #include <fstream>
 #include <string>
@@ -35,12 +37,10 @@ class Robot : public frc::TimedRobot, public utilities::HandlesChecksAndExecs
 {
 private:
   const std::string inputRecordFileName{"/home/lvuser/InputRecord.rcd"};
-  const std::string recordBufferName{"/home/lvuser/InputRecordBuffer.rcd"};
   std::ofstream m_recordFile{};
   std::ifstream m_recordReadFile{};
   bool tankMode{false};
   //Configuration constants will go here until a configuration system can be set up
-  using joystick_t = frc::Joystick;
   using driveMotor_t = ctre::phoenix::motorcontrol::can::WPI_VictorSPX;
   using intakeMotor_t = driveMotor_t;
   using storageMotor_t = driveMotor_t;
@@ -57,23 +57,8 @@ private:
   using timePoint_t = std::chrono::steady_clock::time_point;
   using duration_t = std::chrono::duration<double>;
 
-  using driver_t = frc::DifferentialDrive;
   using handler_t = utilities::XboxInputHandler;
-
-private:
-  static constexpr double intakeSpeed{1};
-  static constexpr double speedMultiplier{0.75};
-  static constexpr double rotationMultiplier{1};
-
-  /*The input is raised to a power to enable more
-    time on the lower curves
-    */
-
-  //Must be odd for the moment or else the robo cannot move backwards.
-  static constexpr double speedCurvePower{3};
-  static constexpr double rotationCurvePower{1};
-
-  //Automation Con
+  private:
   //Ports for Motors and Controllers
 private:
   static constexpr int controllerPort{0};
@@ -98,25 +83,25 @@ public:
   void AutonomousPeriodic() override;
   void TeleopInit() override;
   void TeleopPeriodic() override;
+  void checkAndExec();
 
-  handler_t &getInputHandler() { return leInputHandler; }
-
-private:
+  utilities::InputHandler& getInputHandler() {return leInputHandler;}
+  private:
   bool isRecording{false}; //Really hacky, will remain until the deeper WPLIB api documentation can be discovered *Indiana Jones Music*
   bool recordingEnabled{true};
-  std::ofstream recordingBuffer;
   long double meanDelta{0};
 
 public:
   void TestPeriodic() override;
+ private:
+      //RobotDataPooints
+    RoboData leRoboData{leGyroscope, leAccelerometer};
+    RoboDrive leDrive{driveMotorsLeft, driveMotorsRight};
+    RoboStorage leStorage{intakeMotorLeft, intakeMotorRight};
+    RoboHook leHook{hookMotor};
 
-private:
-  //RobotDataPoints
-  frc::Pose2d leRobotPosition{};
-
-  controller_t leController{controllerPort}; //Of epic dankness
-  joystick_t leJoystickLeft{leJoystickLeftPort};
-  handler_t leInputHandler{};
+     controller_t leController{controllerPort}; //Of epic dankness
+     handler_t leInputHandler{};
   //Declare Motors
   driveMotor_t driveMotorFrontLeft{portDriveFrontLeft};
   driveMotor_t driveMotorFrontRight{portDriveFrontRight};
@@ -134,35 +119,29 @@ private:
   accelerometer_t leAccelerometer{};
 
   //Declare Motor Groups
-  frc::SpeedControllerGroup driveMotorsLeft{driveMotorFrontLeft, driveMotorBackLeft};
-  frc::SpeedControllerGroup driveMotorsRight{driveMotorFrontRight, driveMotorBackRight};
+    frc::SpeedControllerGroup driveMotorsLeft{driveMotorFrontLeft, driveMotorBackLeft};
+    frc::SpeedControllerGroup driveMotorsRight{driveMotorFrontRight, driveMotorBackRight};
 
-  //Recording Utilities
-  utilities::InputRecordAndPlay m_leRecordScribe{};
-  //Recording Utilities
-  void recordActionsExec(utilities::XboxInputHandler &leInputHandler);
+    //Recording Utilities
+    utilities::InputRecordAndPlay m_leRecordScribe{};
+    void recordActionsExec(utilities::XboxInputHandler &leInputHandler);
 
-  //Input checking funcitons
-  void recordActionsExec(utilities::XboxInputHandler &leInputHandler, duration_t delta, std::ofstream &recordBuffer);
-  void joystickPosition(utilities::XboxInputHandler::joystick_t &&joystickLeft, utilities::XboxInputHandler::joystick_t &&joystickRight);
-  void buttonA();
-  void buttonB();
-  void buttonX();
-  void buttonY();
-  void bumper();
-  //Movement Functions
-  void intakeIn();
-  void intakeOut();
-  void intakeStop();
-  void updatePos(duration_t delta);
-  //Control handling nested class
-  //Declare Controllers
+    //Input checking funcitons
+    void recordActionsExec(utilities::XboxInputHandler &leInputHandler, duration_t delta);
+    void joystickPosition(utilities::XboxInputHandler::joystick_t &&joystickLeft, utilities::XboxInputHandler::joystick_t &&joystickRight);
+    void buttonA();
+    void buttonB();
+    void buttonX();
+    void buttonY();
+    void bumper();  
+    //Movement Functions
+    void intakeIn();
+    void intakeOut();
+    void intakeStop();
   //Declare Time Variables
-  timePoint_t lastSnapshot;
   frc::SendableChooser<std::string> m_chooser;
   const std::string kAutoNameDefault = "Yeeter McYeeterson";
   const std::string kAutoNameCustom = "Yeeter McYeeterson";
   std::string m_autoSelected;
 };
-
 #endif

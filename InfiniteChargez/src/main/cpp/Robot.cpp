@@ -18,6 +18,8 @@
 
 #include <iostream>
 #include <thread>
+
+#include <cassert>
 void Robot::OdometryTests()
 {
   //std::cout << "Built Int Acceleration X: " << leAccelerometer.GetX() << " Y: " << leAccelerometer.GetY() << '\n';
@@ -26,8 +28,8 @@ void Robot::OdometryTests()
   //std::cout << leDifferentialOdometer.GetPose().Translation().X() << '\n';
 }
 
-Robot::Robot() : frc::TimedRobot{5_ms}, leAccelerometer{frc::BuiltInAccelerometer::kRange_8G},
-                 lastSnapshot{clock_t::now()}
+Robot::Robot() : frc::TimedRobot{5_ms} 
+                 
 {
 }
 
@@ -64,6 +66,7 @@ void Robot::RobotPeriodic()
 void Robot::AutonomousInit()
 {
   m_recordReadFile.open(inputRecordFileName);
+  assert(m_recordReadFile.is_open());
 
   m_leRecordScribe.loadRecording(m_recordReadFile);
   m_leRecordScribe.playLoadedRecordingToAndExec(*this);
@@ -97,29 +100,28 @@ void Robot::AutonomousPeriodic()
 
 void Robot::TeleopInit()
 {
-  m_recordFile.open(recordBufferName);
+  m_recordFile.open(inputRecordFileName);
+  leRoboData.initSnap();
 }
 
 void Robot::TeleopPeriodic()
 {
-  std::cout << leController.GetStartButton() << '\n';
-  duration_t delta{std::chrono::duration_cast<duration_t>(clock_t::now() - lastSnapshot)};
-  Robot::updatePos(delta);
-  lastSnapshot = clock_t::now();
+  duration_t delta = leRoboData.calcAndGetTimeDelta();
+
+  leRoboData.updatePos(delta);
   OdometryTests();
+  checkAndExec();
 
   leInputHandler = leController;
-  //std::string snap = leInputHandler.getSnapshot();
-  //leInputHandler = snap;
-  std::cout << leInputHandler.getSnapshot() << '\n';
-  checkAndExec();
-  recordActionsExec(leInputHandler, delta, recordingBuffer);
+
+  recordActionsExec(leInputHandler, delta);
 }
 
 void Robot::TestPeriodic()
 {
   OdometryTests();
 }
+
 
 #ifndef RUNNING_FRC_TESTS
 int main()

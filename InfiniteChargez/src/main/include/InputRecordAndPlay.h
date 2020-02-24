@@ -23,7 +23,7 @@ namespace utilities
         //void pauseLoadedRecording();
         //void stopLoadedRecording();
         void recordFromAndTo(HandlesChecksAndExecs &probablyARobot, std::ofstream &outputFile);
-        void snapFromAndWrite(HandlesChecksAndExecs &probablyARobot);
+        void snapFromAndWrite(HandlesChecksAndExecs *probablyARobot);
         //void stopRecording();
         void stopRecording(std::chrono::duration<double> &delta);
 
