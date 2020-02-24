@@ -24,10 +24,6 @@ namespace utilities
 
         //void playRecordingExec(HandlesChecksAndExecs *probablyARobot, duration_t delta);
         void playRecordingExec(HandlesChecksAndExecs *probablyARobot);
-
-        
-
-
     };
 }
 #endif
