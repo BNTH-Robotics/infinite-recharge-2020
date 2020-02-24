@@ -38,4 +38,17 @@ namespace utilities
         }
     }
 
+    void InputPlayer::playRecordingExec(HandlesChecksAndExecs *probablyARobot)
+    {
+        std::string snapshot{""};
+        while(std::getline(*m_recordingFile, snapshot))
+        {
+            std::size_t i{0};
+            std::chrono::duration<double> delta{std::stod(snapshot, &i)};
+            probablyARobot->getInputHandler() = snapshot.substr(i);
+            probablyARobot->checkAndExec();
+            std::this_thread::sleep_for(delta);
+        }
+    }
+
 }

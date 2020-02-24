@@ -20,6 +20,11 @@ void InputRecordAndPlay::stopRecording(std::chrono::duration<double> &delta)
     m_recorder.stopRecording(delta);
 }
 
+void InputRecordAndPlay::stopRecording()
+{
+    m_recorder.stopRecording();
+}
+
 void InputRecordAndPlay::recordFromAndTo(HandlesChecksAndExecs &probablyARobot, std::ofstream &outputFile)
 {
     m_recorder.designateFile(outputFile);

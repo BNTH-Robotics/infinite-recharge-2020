@@ -23,6 +23,8 @@ namespace utilities
         std::thread m_recordingThread{};
 
         void playRecordingExec(HandlesChecksAndExecs *probablyARobot, duration_t delta);
+        void playRecordingExec(HandlesChecksAndExecs *probablyARobot);
+
         
 
 
