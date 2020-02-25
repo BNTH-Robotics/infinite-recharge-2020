@@ -60,22 +60,6 @@ private:
   using handler_t = utilities::XboxInputHandler;
   private:
   //Ports for Motors and Controllers
-<<<<<<< HEAD
-private:
-  static constexpr int controllerPort{0};
-  static constexpr int leJoystickLeftPort{0};
-
-  static constexpr int portDriveFrontLeft{1};
-  static constexpr int portDriveFrontRight{3};
-  static constexpr int portDriveBackLeft{2};
-  static constexpr int portDriveBackRight{4};
-  static constexpr int portIntakeLeft{5};
-  static constexpr int portIntakeRight{6};
-  static constexpr int portStorage{7};
-  static constexpr int portHook{8};
-
-public:
-=======
  private:
      static constexpr int controllerPort{0};
      static constexpr int leJoystickLeftPort{0};
@@ -90,7 +74,6 @@ public:
 
 
  public:
->>>>>>> motor-defs
   Robot();
   void checkAndExec();
   void OdometryTests();
