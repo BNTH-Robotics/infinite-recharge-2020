@@ -127,15 +127,11 @@ public:
     //Input checking funcitons
     void recordActionsExec(utilities::XboxInputHandler &leInputHandler, duration_t delta);
     void joystickPosition(utilities::XboxInputHandler::joystick_t &&joystickLeft, utilities::XboxInputHandler::joystick_t &&joystickRight);
-    void buttonA();
-    void buttonB();
-    void buttonX();
-    void buttonY();
-    void bumper();  
-    //Movement Functions
-    void intakeIn();
-    void intakeOut();
-    void intakeStop();
+    void leftBumper();
+    void rightBumper();
+    void triggerAndRightJoystick();
+    void XAndLeftBumper();
+    void XAndRightBumper();
   //Declare Time Variables
   frc::SendableChooser<std::string> m_chooser;
   const std::string kAutoNameDefault = "Yeeter McYeeterson";
