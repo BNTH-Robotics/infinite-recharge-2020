@@ -83,7 +83,6 @@ public:
   void AutonomousPeriodic() override;
   void TeleopInit() override;
   void TeleopPeriodic() override;
-  void checkAndExec();
 
   utilities::InputHandler& getInputHandler() {return leInputHandler;}
   private:

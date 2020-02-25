@@ -6,7 +6,7 @@
 #include <string>
 #include <fstream>
 
-void Robot::recordActionsExec(utilities::XboxInputHandler &leInputHandler, duration_t delta, std::ofstream &recordBuffer)
+void Robot::recordActionsExec(utilities::XboxInputHandler &leInputHandler, duration_t delta)
 {
     if (leInputHandler.getButtonStartState() && recordingEnabled)
     {
@@ -27,7 +27,7 @@ void Robot::recordActionsExec(utilities::XboxInputHandler &leInputHandler, durat
     {
         std::cout << "recording" << '\n';
         meanDelta = (meanDelta + delta.count()) / 2;
-        m_leRecordScribe.snapFromAndWrite(*this);
+        m_leRecordScribe.snapFromAndWrite(this);
     }
     if (leInputHandler.getButtonXPressed())
     {
