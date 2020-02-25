@@ -5,44 +5,26 @@ Infinite Recharge
 the robot [insert robot name here].
 
 
-Controls(DRAFT)
+Controls
 --------
-The controller used is the glorious Xbox Controller.
+The controller used is the glorious "Xbox Controller".
 
 **Motion:**
 "Arcade" style control 
-Left joystick is used to control the motion.
-Up and down moves the robot forwards and backwards
-Left and Right turns the robot respectively
+* Left joystick is used to control the motion
+    * Up and down moves the robot forwards and backwards
+    * Left and Right turns the robot respectively
 
 **Intake:**
-1. A to have the intake motors spin in
-2. B to out
-3. X to stop intake
+* Left in
+* Right out
 
-_Alternative_: Consider using stick buttons
-to manage the intake rapidly without interruption
-**Storage:**
-
-Option 1(recommended)
-More freedom and control.
-1. Left bumper moves Storage up
-2. Right bumper moves Storage down
-
-Option 2:
-*frees up the driver's hand, less intuitive, less pressing*
-1. Back bumper(one of them) toggle up or down
-
-Option 3(NOT RECOMMENDED):
-(Intuitive but cumbersome, forces the driving hand
-off or to switch to the other joystick.)
-1. D-pad up to move the Container up
-2. D-pad down to move the Container down
-
+**Tank:**
+* B raise
+* A lower
+* Hold right trigger down to have the right joystick manually control the tank
 
 **Hook:**
-1. Y to toggle hook in a garage door fashion.
-i.e. if the hook is moving, press Y to stop it.
-Reasoning: the user will no longer be collecting
-balls, and the Y button is in easy reach
-for time constrained situations.
+* Hold X button
+    * Left Bumper Up
+    * Right Bumper Down
