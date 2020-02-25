@@ -16,7 +16,7 @@ namespace utilities
 
         void load(std::ifstream &recordingFile);
         //void playTo(InputHandler &inputhandler);
-        void playToAndExec(HandlesChecksAndExecs &probablyARobot);
+        void playToAndExec(HandlesChecksAndExecs *probablyARobot);
         //void stop();
     private:
         std::ifstream *m_recordingFile{};

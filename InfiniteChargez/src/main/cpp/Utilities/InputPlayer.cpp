@@ -1,5 +1,6 @@
 #include "InputPlayer.h"
 
+#include <iostream>
 #include <fstream>
 #include <string>
 #include <thread>
@@ -12,7 +13,7 @@ namespace utilities
 
     }
 
-    void InputPlayer::playToAndExec(HandlesChecksAndExecs &probablyARobot)
+    void InputPlayer::playToAndExec(HandlesChecksAndExecs *probablyARobot)
     {
 
         //std::string delta{""};
@@ -22,7 +23,7 @@ namespace utilities
         
 
 
-        m_recordingThread = std::thread{&InputPlayer::playRecordingExec, this, &probablyARobot};
+        m_recordingThread = std::thread{&InputPlayer::playRecordingExec, this, probablyARobot};
         m_recordingThread.detach();
 
     }
@@ -43,6 +44,7 @@ namespace utilities
         std::string snapshot{""};
         while(std::getline(*m_recordingFile, snapshot))
         {
+            std::cout << snapshot;
             std::size_t i{0};
             std::chrono::duration<double> delta{std::stod(snapshot, &i)};
             probablyARobot->getInputHandler() = snapshot.substr(i);

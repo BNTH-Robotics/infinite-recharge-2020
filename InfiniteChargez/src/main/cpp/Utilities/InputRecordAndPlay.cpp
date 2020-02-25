@@ -9,7 +9,7 @@ void InputRecordAndPlay::loadRecording(std::ifstream &recordingFile)
     m_recording = &recordingFile;
 }
 
-void InputRecordAndPlay::playLoadedRecordingToAndExec(HandlesChecksAndExecs &probablyARobot)
+void InputRecordAndPlay::playLoadedRecordingToAndExec(HandlesChecksAndExecs *probablyARobot)
 {
     m_player.load(*m_recording);
     m_player.playToAndExec(probablyARobot);

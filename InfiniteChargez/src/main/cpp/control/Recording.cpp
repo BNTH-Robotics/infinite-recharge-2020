@@ -20,8 +20,8 @@ void Robot::recordActionsExec(utilities::XboxInputHandler &leInputHandler, durat
         isRecording = false;
         assert(m_recordFile.is_open());
         isRecording = false;
-        duration_t meanDeltaFinal{meanDelta};
-        m_leRecordScribe.stopRecording(meanDeltaFinal);
+        //duration_t meanDeltaFinal{meanDelta};
+        m_leRecordScribe.stopRecording();
         
         m_recordFile.close();
     }
