@@ -60,6 +60,7 @@ private:
   using handler_t = utilities::XboxInputHandler;
   private:
   //Ports for Motors and Controllers
+<<<<<<< HEAD
 private:
   static constexpr int controllerPort{0};
   static constexpr int leJoystickLeftPort{0};
@@ -74,6 +75,22 @@ private:
   static constexpr int portHook{8};
 
 public:
+=======
+ private:
+     static constexpr int controllerPort{0};
+     static constexpr int leJoystickLeftPort{0};
+
+     static constexpr int portDriveFrontLeft{1};
+     static constexpr int portDriveFrontRight{3};
+     static constexpr int portDriveBackLeft{2};
+     static constexpr int portDriveBackRight{4};
+     static constexpr int portIntake{5};
+     static constexpr int portTank{7};
+     static constexpr int portHook{8};
+
+
+ public:
+>>>>>>> motor-defs
   Robot();
   void checkAndExec();
   void OdometryTests();
@@ -96,7 +113,7 @@ public:
       //RobotDataPooints
     RoboData leRoboData{leGyroscope, leAccelerometer};
     RoboDrive leDrive{driveMotorsLeft, driveMotorsRight};
-    RoboStorage leStorage{intakeMotorLeft, intakeMotorRight};
+    RoboStorage leStorage{intakeMotor, tankMotor};
     RoboHook leHook{hookMotor};
 
      controller_t leController{controllerPort}; //Of epic dankness
@@ -107,10 +124,9 @@ public:
   driveMotor_t driveMotorBackLeft{portDriveBackLeft};
   driveMotor_t driveMotorBackRight{portDriveBackRight};
 
-  intakeMotor_t intakeMotorLeft{portIntakeLeft};
-  intakeMotor_t intakeMotorRight{portIntakeRight};
+     intakeMotor_t intakeMotor{portIntake};
 
-  storageMotor_t storageMotor{portStorage};
+     storageMotor_t tankMotor{portTank};
 
   hookMotor_t hookMotor{portHook};
   //Non-motor components
