@@ -8,8 +8,13 @@
     void Robot::checkAndExec()
     {
         joystickPosition(leInputHandler.getJoystickLeft(), leInputHandler.getJoystickRight());
-        leftBumper();
         rightBumper();
+        leftBumper();
+        buttonA();
+        buttonB();
+        triggerAndRightJoystick();
+        XAndLeftRightBumper();
+
 
 
     }
