@@ -11,9 +11,9 @@ public:
     RoboHook(controller_t &hookMotor):
         m_hookMotor{&hookMotor} {}
     //setHookHeight
-    void hookUp();
-    void hookDown();
-    void hookStop();
+    void Up();
+    void Down();
+    void Stop();
 private:
     controller_t *m_hookMotor;
 

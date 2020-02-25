@@ -125,13 +125,15 @@ public:
     void recordActionsExec(utilities::XboxInputHandler &leInputHandler);
 
     //Input checking funcitons
+    static constexpr double triggerIntakeTolerance{0.9};
     void recordActionsExec(utilities::XboxInputHandler &leInputHandler, duration_t delta);
     void joystickPosition(utilities::XboxInputHandler::joystick_t &&joystickLeft, utilities::XboxInputHandler::joystick_t &&joystickRight);
     void leftBumper();
     void rightBumper();
+    void buttonA();
+    void buttonB();
     void triggerAndRightJoystick();
-    void XAndLeftBumper();
-    void XAndRightBumper();
+    void XAndLeftRightBumper();
   //Declare Time Variables
   frc::SendableChooser<std::string> m_chooser;
   const std::string kAutoNameDefault = "Yeeter McYeeterson";
