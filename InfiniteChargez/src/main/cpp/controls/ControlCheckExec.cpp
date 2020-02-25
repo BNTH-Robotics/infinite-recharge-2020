@@ -8,11 +8,10 @@
     void Robot::checkAndExec()
     {
         joystickPosition(leInputHandler.getJoystickLeft(), leInputHandler.getJoystickRight());
-        //buttonA();
-        //buttonB();
-        //buttonX();
-        //buttonY();
-        //bumper();  
+        leftBumper();
+        rightBumper();
+
+
     }
     
     void Robot::joystickPosition(utilities::XboxInputHandler::joystick_t &&joystickLeft, utilities::XboxInputHandler::joystick_t &&joystickRight)
@@ -34,3 +33,65 @@
 
         leDrive.setMovementMap(leInputHandler.getJoystickLeft());
     }
+
+    void Robot::leftBumper()
+    {
+        if (leInputHandler.getBumperLeftState())
+        {
+        leStorage.intakeIn();
+        }
+    }
+
+    void Robot::rightBumper()
+    {
+        if (leInputHandler.getBumperRightState())
+        {
+        leStorage.intakeEject();
+        }
+    }
+
+    void Robot::buttonA()
+    {
+        if (leInputHandler.getButtonAState())
+        {
+        leStorage.lower();
+        }
+    }
+
+    void Robot::buttonB()
+    {
+        if (leInputHandler.getButtonBState())
+        {
+        leStorage.raise();
+        }
+    }
+
+    void Robot::triggerAndRightJoystick()
+    {
+        if (leInputHandler.getTriggerRight > triggerIntakeTolerance)
+        {
+        double rightJoystickY = -leInputHandler.getJoystickRight().y;
+        leStorage.setTankMotorManual(rightJoystickY);
+        }
+    }
+
+    void Robot::XAndLeftRightBumper()
+    {
+        if (leInputHandler.getButtonXState())
+        {
+            if(leInputHandler.getBumperLeftState())
+            {
+                leHook.up();
+            }
+            else if(leInputHandler.getBumperRightState())
+            {
+                leHook.down();
+            }
+            else
+            {
+                leHook.stop();
+            }
+            
+        }
+    }
+

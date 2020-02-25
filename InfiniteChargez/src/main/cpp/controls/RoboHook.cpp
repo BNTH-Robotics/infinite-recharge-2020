@@ -1,16 +1,16 @@
 #include "RoboHook.h";
 
-    void RoboHook::Up()
+    void RoboHook::up()
     {
         m_hookMotor->Set(hookUpSpeed);
     }
 
-    void RoboHook::Down()
+    void RoboHook::down()
     {
         m_hookMotor->Set(hookDownSpeed);
     }
 
-    void RoboHook::Stop()
+    void RoboHook::stop()
     {
         m_hookMotor->Set(0);
     }
