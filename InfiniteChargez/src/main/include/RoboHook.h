@@ -16,5 +16,8 @@ public:
     void hookStop();
 private:
     controller_t *m_hookMotor;
+
+    static constexpr double hookUpSpeed{1.0};
+    static constexpr double hookDownSpeed{-1.0};
 };
 #endif
