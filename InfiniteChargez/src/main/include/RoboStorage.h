@@ -22,5 +22,10 @@ public:
 private:
   frc::SpeedController* m_intakeMotor;
   frc::SpeedController* m_tankMotor;
+
+    static constexpr double tankRaiseSpeed{1.0};
+    static constexpr double tankLowerSpeed{0.0};
+    static constexpr double intakeInSpeed{-1.0};
+    static constexpr double intakeEjectSpeed{1.0};
 };
 #endif
