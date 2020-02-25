@@ -24,3 +24,8 @@
     {
         m_intakeMotor->Set(0);
     }
+
+    void RoboStorage::setTankMotorManual(double vel)
+    {
+        m_intakeMotor->Set(vel);
+    }

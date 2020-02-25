@@ -18,7 +18,7 @@ public:
     void intakeStop();
     //void setAngle();
 
-    //void setMotorManual();
+    void setTankMotorManual(double vel);
 private:
   frc::SpeedController* m_intakeMotor;
   frc::SpeedController* m_tankMotor;
