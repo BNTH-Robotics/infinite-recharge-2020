@@ -34,7 +34,9 @@ Robot::Robot() : frc::TimedRobot{5_ms}
 void Robot::RobotInit()
 {
   m_chooser.SetDefaultOption(kAutoNameDefault, kAutoNameDefault);
-  m_chooser.AddOption(kAutoNameCustom, kAutoNameCustom);
+  m_chooser.AddOption("SquareTest.rcd", "SquareTest.rcd");
+  m_chooser.AddOption("Yeet2AndScore.rcd", "Yeet2AndScore.rcd");
+
   frc::SmartDashboard::PutData("Auto Modes", &m_chooser);
 }
 
@@ -63,7 +65,7 @@ void Robot::RobotPeriodic()
  */
 void Robot::AutonomousInit()
 {
-  m_recordReadFile.open(inputRecordFileName);
+  m_recordReadFile.open(inputRecordFileName + m_chooser.GetSelected());
   assert(m_recordReadFile.is_open());
 
   m_leRecordScribe.loadRecording(m_recordReadFile);
@@ -98,7 +100,7 @@ void Robot::AutonomousPeriodic()
 
 void Robot::TeleopInit()
 {
-  m_recordFile.open(inputRecordFileName);
+  m_recordFile.open(inputRecordFileName + m_chooser.GetSelected());
   leRoboData.initSnap();
 }
 

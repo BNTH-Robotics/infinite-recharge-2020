@@ -60,6 +60,7 @@ namespace utilities
             }
             else
             {
+                std::cout << "This is sleeping!\n";
             std::this_thread::sleep_for(delta - overheadTime);
             }
         }

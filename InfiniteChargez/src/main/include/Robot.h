@@ -37,7 +37,7 @@
 class Robot : public frc::TimedRobot, public utilities::HandlesChecksAndExecs
 {
 private:
-  const std::string inputRecordFileName{"/home/lvuser/InputRecord.rcd"};
+  const std::string inputRecordFileName{"/home/lvuser/"};
   std::ofstream m_recordFile{};
   std::ifstream m_recordReadFile{};
   bool tankMode{false};
@@ -140,7 +140,7 @@ private:
     void intakeStop();
   //Declare Time Variables
   frc::SendableChooser<std::string> m_chooser;
-  const std::string kAutoNameDefault = "Yeeter McYeeterson";
+  const std::string kAutoNameDefault = "InputRecord.rcd";
   const std::string kAutoNameCustom = "Yeeter McYeeterson";
   std::string m_autoSelected;
 };
