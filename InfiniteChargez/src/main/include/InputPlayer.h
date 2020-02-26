@@ -10,7 +10,9 @@ namespace utilities
 {
     class InputPlayer
     {
+    using clock_t  = std::chrono::steady_clock;
     using duration_t = std::chrono::duration<double>;
+    using timepoint_t = std::chrono::time_point<clock_t>;
     public:
         InputPlayer () {};
 
@@ -21,6 +23,8 @@ namespace utilities
     private:
         std::ifstream *m_recordingFile{};
         std::thread m_recordingThread{};
+
+        timepoint_t m_lastSnap;
 
         //void playRecordingExec(HandlesChecksAndExecs *probablyARobot, duration_t delta);
         void playRecordingExec(HandlesChecksAndExecs *probablyARobot);
