@@ -57,10 +57,11 @@ namespace utilities
             if (first)
             {
             std::this_thread::sleep_for(delta);
+            first = false;
             }
             else
             {
-                std::cout << "This is sleeping!\n";
+            std::cout << overheadTime.count() << '\n';
             std::this_thread::sleep_for(delta - overheadTime);
             }
         }
