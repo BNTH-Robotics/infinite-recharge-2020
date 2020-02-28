@@ -73,7 +73,7 @@
 
     void Robot::triggerAndRightJoystick()
     {
-        if (leInputHandler.getTriggerRight > triggerIntakeTolerance)
+        if (leInputHandler.getTriggerRight() > triggerIntakeTolerance)
         {
         double rightJoystickY = -leInputHandler.getJoystickRight().y;
         leStorage.setTankMotorManual(rightJoystickY);
