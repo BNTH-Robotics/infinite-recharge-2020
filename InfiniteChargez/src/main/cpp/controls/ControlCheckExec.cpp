@@ -41,7 +41,7 @@
 
     void Robot::leftBumper()
     {
-        if (leInputHandler.getBumperLeftState())
+        if (leInputHandler.getBumperLeftState() && !leInputHandler.getButtonXPressed())
         {
         leStorage.intakeIn();
         }
@@ -49,7 +49,7 @@
 
     void Robot::rightBumper()
     {
-        if (leInputHandler.getBumperRightState())
+        if (leInputHandler.getBumperRightState() && !leInputHandler.getButtonXPressed())
         {
         leStorage.intakeEject();
         }

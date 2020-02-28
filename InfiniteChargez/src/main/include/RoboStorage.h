@@ -16,6 +16,20 @@ public:
     void intakeIn();
     void intakeEject();
     void intakeStop();
+    int getIntakeStatus() 
+    {
+      if(m_intakeMotor->Get() > 0)
+      {
+        return 1;
+      } 
+      else if (m_intakeMotor->Get() < 0)
+      {
+        return -1;
+      }
+      else
+      {
+        return 0;
+      }
     //void setAngle();
 
     void setTankMotorManual(double vel);
