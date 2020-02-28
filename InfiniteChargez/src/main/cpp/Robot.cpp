@@ -36,8 +36,33 @@ Robot::Robot() : frc::TimedRobot{10_ms}
 void Robot::RobotInit()
 {
   m_chooser.SetDefaultOption(kAutoNameDefault, kAutoNameDefault);
-  m_chooser.AddOption("SquareTest.rcd", "SquareTest.rcd");
-  m_chooser.AddOption("Yeet2AndScore.rcd", "Yeet2AndScore.rcd");
+  m_chooser.AddOption("R1-DumpAndYeet", "R1-DumpAndYeet.rcd");
+  m_chooser.AddOption("R2-DumpAndYeet", "R2-DumpAndYeet.rcd");
+  m_chooser.AddOption("R3-DumpAndYeet", "R3-DumpAndYeet.rcd");
+  m_chooser.AddOption("B1-DumpAndYeet", "B1-DumpAndYeet.rcd");
+  m_chooser.AddOption("B2-DumpAndYeet", "B2-DumpAndYeet.rcd");
+  m_chooser.AddOption("B3-DumpAndYeet", "B3-DumpAndYeet.rcd");
+
+  m_chooser.AddOption("R1-CrossTheLine", "R1-CrossTheLine.rcd");
+  m_chooser.AddOption("R2-CrossTheLine", "R2-CrossTheLine.rcd");
+  m_chooser.AddOption("R3-CrossTheLine", "R3-CrossTheLine.rcd");
+  m_chooser.AddOption("B1-CrossTheLine", "B1-CrossTheLine.rcd");
+  m_chooser.AddOption("B2-CrossTheLine", "B2-CrossTheLine.rcd");
+  m_chooser.AddOption("B3-CrossTheLine", "B3-CrossTheLine.rcd");
+
+  m_chooser.AddOption("R1", "R1.rcd");
+  m_chooser.AddOption("R2", "R2.rcd");
+  m_chooser.AddOption("R3", "R3.rcd");
+  m_chooser.AddOption("B1", "B1.rcd");
+  m_chooser.AddOption("B2", "B2.rcd");
+  m_chooser.AddOption("B3", "B3.rcd");
+
+
+
+
+
+
+
 
   frc::SmartDashboard::PutData("Auto Modes", &m_chooser);
 }
