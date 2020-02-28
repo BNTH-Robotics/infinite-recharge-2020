@@ -41,29 +41,28 @@ namespace utilities
 
     void InputPlayer::playRecordingExec(HandlesChecksAndExecs *probablyARobot)
     {
-        bool first{true};
-        m_lastSnap = clock_t::now();
+        duration_t overheadTime{0};
+        duration_t executionTime{0};
+        timepoint_t now{clock_t::now()};
+        timepoint_t lastSnap{clock_t::now()};
         std::string snapshot{""};
         while(std::getline(*m_recordingFile, snapshot))
         {
-            timepoint_t now = clock_t::now();
-            std::cout << snapshot;
             std::size_t i{0};
             std::chrono::duration<double> delta{std::stod(snapshot, &i)};
+            duration_t sleepTime{delta - overheadTime};
+
+            std::this_thread::sleep_for((sleepTime));
             probablyARobot->getInputHandler() = snapshot.substr(i);
             probablyARobot->checkAndExec();
-            duration_t overheadTime{std::chrono::duration_cast<duration_t>(now - m_lastSnap) - delta};
-            m_lastSnap = now;
-            if (first)
-            {
-            std::this_thread::sleep_for(delta);
-            first = false;
-            }
-            else
-            {
-            std::cout << overheadTime.count() << '\n';
-            std::this_thread::sleep_for(delta - overheadTime);
-            }
+            std::cout << snapshot << '\n';
+            //overheadTime -= delta;
+            now = clock_t::now();
+            executionTime = std::chrono::duration_cast<duration_t>(now - lastSnap);
+            lastSnap = now;
+            std::cout << "DeltaInput: " << sleepTime.count() << '\n';
+            std::cout << (executionTime).count() << '\n';
+            overheadTime = executionTime - sleepTime;
         }
     }
 

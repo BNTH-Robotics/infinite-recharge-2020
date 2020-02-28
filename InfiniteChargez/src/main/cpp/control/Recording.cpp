@@ -32,9 +32,9 @@ void Robot::recordActionsExec(utilities::XboxInputHandler &leInputHandler, durat
         meanDelta = (meanDelta + delta.count()) / 2;
         m_leRecordScribe.snapFromAndWrite(this, delta);
     }
-    if (leInputHandler.getButtonXPressed())
+    if (leInputHandler.getButtonXState())
     {
         recordingEnabled = true;
-        std::cout << "Recording Resetted";
+        std::cout << "Recording Resetted" << '\n';
     }
 }
