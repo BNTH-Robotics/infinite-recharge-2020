@@ -21,7 +21,7 @@ namespace utilities
         //void playLoadedRecordingTo(utilities::XboxInputHandler);
         void playLoadedRecordingToAndExec(HandlesChecksAndExecs *probablyARobot);
         //void pauseLoadedRecording();
-        //void stopLoadedRecording();
+        void stopLoadedRecording() {m_player.stop();}
         void recordFromAndTo(HandlesChecksAndExecs &probablyARobot, std::ofstream &outputFile);
         void snapFromAndWrite(HandlesChecksAndExecs *probablyARobot);
         void snapFromAndWrite(HandlesChecksAndExecs *probablyARobot, std::chrono::duration<double> delta);
