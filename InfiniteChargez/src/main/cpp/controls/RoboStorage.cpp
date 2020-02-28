@@ -1,6 +1,7 @@
 #include "RoboStorage.h"
 
 #include <cmath>
+#include <thread>
 
     void RoboStorage::raise()
     {
@@ -61,5 +62,6 @@
                }
                m_tankMotor->Set(tankRaiseStop + frame * (tankRaiseStart - tankRaiseStop));
            }
+           std::this_thread::sleep_for(std::chrono::duration<double>{0.5}); 
         }
     }
