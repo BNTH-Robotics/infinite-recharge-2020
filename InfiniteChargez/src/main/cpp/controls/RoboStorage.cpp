@@ -29,3 +29,8 @@
     {
         m_intakeMotor->Set(vel);
     }
+
+    void RoboStorage::tankHandler()
+    {
+
+    }

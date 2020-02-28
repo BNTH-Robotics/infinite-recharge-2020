@@ -43,7 +43,15 @@
     {
         if (leInputHandler.getBumperLeftState() && !leInputHandler.getButtonXPressed())
         {
-        leStorage.intakeIn();
+            if(!(leStorage.getIntakeStatus() == -1))
+            {
+            leStorage.intakeIn();
+            }
+            else if (leStorage.getIntakeStatus() == -1)
+            {
+            leStorage.intakeStop();
+            }
+            
         }
     }
 

@@ -31,6 +31,7 @@ public:
         return 0;
       }
     }
+    void tankHandler();
     //void setAngle();
 
     void setTankMotorManual(double vel);
@@ -38,8 +39,10 @@ private:
   frc::SpeedController* m_intakeMotor;
   frc::SpeedController* m_tankMotor;
 
-    static constexpr double tankRaiseSpeed{1.0};
-    static constexpr double tankLowerSpeed{0.0};
+    static constexpr double tankRaiseSpeed{0.75};
+    static constexpr double tankRaiseStart{1.0};
+    static constexpr double tankRaiseStop{0.5};
+    static constexpr double tankLowerSpeed{0.2};
     static constexpr double intakeInSpeed{-1.0};
     static constexpr double intakeEjectSpeed{1.0};
 };
