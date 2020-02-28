@@ -92,6 +92,10 @@ void Robot::RobotPeriodic()
  */
 void Robot::AutonomousInit()
 {
+  if (m_recordFile.is_open)
+  {
+    m_recordFile.close();
+  }
   m_recordReadFile.open(inputRecordFileName + m_chooser.GetSelected());
   assert(m_recordReadFile.is_open());
 

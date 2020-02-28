@@ -19,12 +19,13 @@ namespace utilities
         void load(std::ifstream &recordingFile);
         //void playTo(InputHandler &inputhandler);
         void playToAndExec(HandlesChecksAndExecs *probablyARobot);
-        //void stop();
+        void stop(){m_playbackEnabled = false;}
     private:
         std::ifstream *m_recordingFile{};
         std::thread m_recordingThread{};
 
         timepoint_t m_lastSnap;
+        bool m_playbackEnabled;
 
         //void playRecordingExec(HandlesChecksAndExecs *probablyARobot, duration_t delta);
         void playRecordingExec(HandlesChecksAndExecs *probablyARobot);

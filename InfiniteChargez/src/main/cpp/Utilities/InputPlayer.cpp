@@ -41,6 +41,7 @@ namespace utilities
 
     void InputPlayer::playRecordingExec(HandlesChecksAndExecs *probablyARobot)
     {
+        m_playbackEnabled = true;
         duration_t overheadTime{0};
         duration_t executionTime{0};
         timepoint_t now{clock_t::now()};
@@ -48,6 +49,11 @@ namespace utilities
         std::string snapshot{""};
         while(std::getline(*m_recordingFile, snapshot))
         {
+            if (!m_playbackEnabled)
+            {
+                std::cout << "Playback Stopped!\n";
+                break;
+            }
             std::size_t i{0};
             std::chrono::duration<double> delta{std::stod(snapshot, &i)};
             duration_t sleepTime{delta - overheadTime};
