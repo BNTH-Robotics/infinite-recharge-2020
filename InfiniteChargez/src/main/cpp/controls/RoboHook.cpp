@@ -1,6 +1,6 @@
 #include "RoboHook.h"
 
-    void RoboHook::up()
+    void RoboHook::advance()
     {
         m_hookMotor->Set(hookUpSpeed);
     }

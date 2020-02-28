@@ -2,13 +2,18 @@
 #define YEET_ROBOT_STORAGE_H
 
 #include <frc/SpeedController.h>
+#include <thread>
 
 
 class RoboStorage
 {
 public:
     RoboStorage(frc::SpeedController &intakeMotor, frc::SpeedController &tankMotor):
-      m_intakeMotor{&intakeMotor}, m_tankMotor{&tankMotor} {}
+      m_intakeMotor{&intakeMotor}, m_tankMotor{&tankMotor} 
+      {
+        std::thread handler{&RoboStorage::tankHandler, this};
+        handler.detach();
+      }
     void setIntakeSpeed()
     {}
     void raise();

@@ -5,12 +5,14 @@
 
     void RoboStorage::raise()
     {
-        manual - false;
+        manual = false;
+        m_raising = true;
     }
 
     void RoboStorage::lower()
     {
         manual = false;
+        m_raising = false;
     }
 
     void RoboStorage::intakeIn()

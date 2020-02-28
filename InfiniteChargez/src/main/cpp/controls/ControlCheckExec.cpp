@@ -97,7 +97,7 @@
             if(leInputHandler.getBumperLeftState())
             {
                 std::cout << "Hook up \n";
-                leHook.up();
+                leHook.advance();
             }
             else if(leInputHandler.getBumperRightState())
             {
