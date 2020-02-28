@@ -5,18 +5,16 @@
 
     void RoboStorage::raise()
     {
-        m_tankMotor->Set(tankRaiseSpeed);
+        manual - false;
     }
 
     void RoboStorage::lower()
     {
         manual = false;
-        m_tankMotor->Set(tankLowerSpeed);
     }
 
     void RoboStorage::intakeIn()
     {
-        manual = false;
         m_intakeMotor->Set(intakeInSpeed);
     }
 
