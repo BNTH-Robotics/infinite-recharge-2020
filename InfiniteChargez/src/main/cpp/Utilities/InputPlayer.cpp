@@ -12,7 +12,7 @@ namespace utilities
 
     }
 
-    void InputPlayer::playToAndExec(HandlesChecksAndExecs &probablyARobot)
+    void InputPlayer::playToAndExec(HandlesChecksAndExecs *probablyARobot)
     {
         std::string delta{""};
         std::getline(*m_recordingFile, delta);
@@ -21,7 +21,7 @@ namespace utilities
         
 
 
-        m_recordingThread = std::thread{&InputPlayer::playRecordingExec, this, &probablyARobot, deltaTime};
+        m_recordingThread = std::thread{&InputPlayer::playRecordingExec, this, probablyARobot, deltaTime};
         m_recordingThread.detach();
 
     }
