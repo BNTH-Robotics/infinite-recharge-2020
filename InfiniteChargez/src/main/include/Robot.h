@@ -139,7 +139,7 @@ public:
     void intakeStop();
   //Declare Time Variables
   frc::SendableChooser<std::string> m_chooser;
-  const std::string kAutoNameDefault = "InputRecord.rcd";
+  const std::string kAutoNameDefault = "R1-DumpAndYeet";
   const std::string kAutoNameCustom = "Yeeter McYeeterson";
   std::string m_autoSelected;
 };

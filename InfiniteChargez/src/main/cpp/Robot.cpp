@@ -35,7 +35,7 @@ Robot::Robot() : frc::TimedRobot{10_ms}
 
 void Robot::RobotInit()
 {
-  m_chooser.SetDefaultOption(kAutoNameDefault, kAutoNameDefault);
+  m_chooser.SetDefaultOption("R1-DumpAndYeet", "R1-DumpAndYeet.rcd");
   m_chooser.AddOption("R1-DumpAndYeet", "R1-DumpAndYeet.rcd");
   m_chooser.AddOption("R2-DumpAndYeet", "R2-DumpAndYeet.rcd");
   m_chooser.AddOption("R3-DumpAndYeet", "R3-DumpAndYeet.rcd");
