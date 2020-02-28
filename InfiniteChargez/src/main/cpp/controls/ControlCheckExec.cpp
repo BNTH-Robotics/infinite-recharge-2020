@@ -7,6 +7,7 @@
 
     void Robot::checkAndExec()
     {
+        std::cout << leInputHandler.getJoystickLeft().x << '\n';
         joystickPosition(leInputHandler.getJoystickLeft(), leInputHandler.getJoystickRight());
         rightBumper();
         leftBumper();
@@ -41,23 +42,24 @@
 
     void Robot::leftBumper()
     {
-        if (leInputHandler.getBumperLeftState() && !leInputHandler.getButtonXPressed())
+        std::cout << leStorage.getIntakeStatus() << '\n';
+        if (leInputHandler.getBumperLeftState() && !leInputHandler.getButtonXState())
         {
-            if(!(leStorage.getIntakeStatus() == -1))
-            {
+            //if(!(leStorage.getIntakeStatus() == -1))
+            //{
             leStorage.intakeIn();
-            }
-            else if (leStorage.getIntakeStatus() == -1)
-            {
-            leStorage.intakeStop();
-            }
+            //}
+            //else if (leStorage.getIntakeStatus() == -1)
+            //{
+            //leStorage.intakeStop();
+            //}
             
         }
     }
 
     void Robot::rightBumper()
     {
-        if (leInputHandler.getBumperRightState() && !leInputHandler.getButtonXPressed())
+        if (leInputHandler.getBumperRightState() && !leInputHandler.getButtonXState())
         {
         leStorage.intakeEject();
         }
@@ -94,10 +96,12 @@
         {
             if(leInputHandler.getBumperLeftState())
             {
+                std::cout << "Hook up \n";
                 leHook.up();
             }
             else if(leInputHandler.getBumperRightState())
             {
+                std::cout << "Hook down \n";
                 leHook.down();
             }
             else
