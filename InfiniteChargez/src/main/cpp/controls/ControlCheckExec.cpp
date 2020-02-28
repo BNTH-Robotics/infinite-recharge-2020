@@ -33,7 +33,7 @@
         ////Squarified Values
         //const utilities::Pair2D<double> SquareJoystickLeft{utilities::squarify(JoystickLeftX, JoystickLeftY)};
         //const utilities::Pair2D<double> SquareJoystickRight{utilities::squarify(JoystickRightX, JoystickRightY)};
-        utilities::Pair2D<double> joystickValuesThatMakeSense{-leInputHandler.getJoystickLeft().y, leInputHandler.getJoystickLeft().x};
+        utilities::Pair2D<double> joystickValuesThatMakeSense{-leInputHandler.getJoystickLeft().y, -leInputHandler.getJoystickLeft().x};
         leInputHandler.setJoystickLeft(joystickValuesThatMakeSense); //Computer scientists are stupid. Up is down ahhhhh.
 
         leDrive.setMovementMap(leInputHandler.getJoystickLeft());
