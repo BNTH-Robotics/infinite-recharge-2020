@@ -42,20 +42,27 @@ namespace utilities
     void InputPlayer::playRecordingExec(HandlesChecksAndExecs *probablyARobot)
     {
         duration_t overheadTime{0};
-        bool first{true};
-        m_lastSnap = clock_t::now();
+        duration_t executionTime{0};
+        timepoint_t now{clock_t::now()};
+        timepoint_t lastSnap{clock_t::now()};
         std::string snapshot{""};
         while(std::getline(*m_recordingFile, snapshot))
         {
             std::size_t i{0};
             std::chrono::duration<double> delta{std::stod(snapshot, &i)};
-            std::this_thread::sleep_for(delta - overheadTime);
+            duration_t sleepTime{delta - overheadTime};
+
+            std::this_thread::sleep_for((sleepTime));
             probablyARobot->getInputHandler() = snapshot.substr(i);
             probablyARobot->checkAndExec();
-            timepoint_t now = clock_t::now();
-            std::cout << snapshot;
-            overheadTime = std::chrono::duration_cast<duration_t>(now - m_lastSnap) - delta;
-            m_lastSnap = now;
+            std::cout << snapshot << '\n';
+            //overheadTime -= delta;
+            now = clock_t::now();
+            executionTime = std::chrono::duration_cast<duration_t>(now - lastSnap);
+            lastSnap = now;
+            std::cout << "DeltaInput: " << sleepTime.count() << '\n';
+            std::cout << (executionTime).count() << '\n';
+            overheadTime = executionTime - sleepTime;
         }
     }
 
