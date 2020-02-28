@@ -35,6 +35,8 @@ Robot::Robot() : frc::TimedRobot{5_ms}
 
 void Robot::RobotInit()
 {
+  driveMotorsLeft.SetInverted(true);
+  driveMotorsRight.SetInverted(true);
   m_chooser.SetDefaultOption(kAutoNameDefault, kAutoNameDefault);
   m_chooser.AddOption(kAutoNameCustom, kAutoNameCustom);
   frc::SmartDashboard::PutData("Auto Modes", &m_chooser);
