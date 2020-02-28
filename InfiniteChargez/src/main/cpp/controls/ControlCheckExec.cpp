@@ -96,13 +96,13 @@
         {
             if(leInputHandler.getBumperLeftState())
             {
-                std::cout << "Hook up \n";
+                std::cout << "Hook advance \n";
                 leHook.advance();
             }
             else if(leInputHandler.getBumperRightState())
             {
-                std::cout << "Hook down \n";
-                leHook.down();
+                std::cout << "Hook rewind \n";
+                leHook.rewind();
             }
             else
             {

@@ -12,7 +12,7 @@ public:
         m_hookMotor{&hookMotor} {}
     //setHookHeight
     void advance();
-    void down();
+    void rewind();
     void stop();
 private:
     controller_t *m_hookMotor;
