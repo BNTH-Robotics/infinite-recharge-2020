@@ -20,8 +20,8 @@ void Robot::recordActionsExec(utilities::XboxInputHandler &leInputHandler, durat
         isRecording = false;
         assert(m_recordFile.is_open());
         isRecording = false;
-        duration_t meanDeltaFinal{meanDelta};
-        m_leRecordScribe.stopRecording(meanDeltaFinal);
+        //duration_t meanDeltaFinal{meanDelta};
+        m_leRecordScribe.stopRecording();
         
         m_recordFile.close();
     }
@@ -30,11 +30,11 @@ void Robot::recordActionsExec(utilities::XboxInputHandler &leInputHandler, durat
     {
         std::cout << "recording" << '\n';
         meanDelta = (meanDelta + delta.count()) / 2;
-        m_leRecordScribe.snapFromAndWrite(this);
+        m_leRecordScribe.snapFromAndWrite(this, delta);
     }
-    if (leInputHandler.getButtonXPressed())
+    if (leInputHandler.getButtonXState())
     {
         recordingEnabled = true;
-        std::cout << "Recording Resetted";
+        std::cout << "Recording Resetted" << '\n';
     }
 }
