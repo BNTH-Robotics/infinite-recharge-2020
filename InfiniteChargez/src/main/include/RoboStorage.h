@@ -11,8 +11,6 @@ public:
     RoboStorage(frc::SpeedController &intakeMotor, frc::SpeedController &tankMotor):
       m_intakeMotor{&intakeMotor}, m_tankMotor{&tankMotor} 
       {
-        std::thread handler{&RoboStorage::tankHandler, this};
-        handler.detach();
       }
     void setIntakeSpeed()
     {}
@@ -21,6 +19,13 @@ public:
     void intakeIn();
     void intakeEject();
     void intakeStop();
+    void startHandler()
+    {
+
+        std::thread handler{&RoboStorage::tankHandler, this};
+        handler.detach();
+
+    }
     int getIntakeStatus() 
     {
       if(m_intakeMotor->Get() > 0)

@@ -7,6 +7,7 @@
     {
         manual = false;
         m_raising = true;
+        std::cout << "raise\n";
     }
 
     void RoboStorage::lower()
@@ -44,6 +45,7 @@
         {
            if (!manual) 
            {
+               std::cout << "Not manual\n";
                if (m_raising)
                {
                    frame += changeRate;
@@ -60,8 +62,10 @@
                        frame = 0;
                    }
                }
+               std::cout << frame << '\n';
                m_tankMotor->Set(tankRaiseStop + frame * (tankRaiseStart - tankRaiseStop));
+               
            }
-           std::this_thread::sleep_for(std::chrono::duration<double>{0.5}); 
+           std::this_thread::sleep_for(std::chrono::duration<double>{0.01}); 
         }
     }
