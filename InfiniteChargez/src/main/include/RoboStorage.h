@@ -30,6 +30,7 @@ public:
       {
         return 0;
       }
+    }
     //void setAngle();
 
     void setTankMotorManual(double vel);
