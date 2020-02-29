@@ -35,6 +35,7 @@ Robot::Robot() : frc::TimedRobot{10_ms}
 
 void Robot::RobotInit()
 {
+  //leStorage.startHandler();
   m_chooser.SetDefaultOption("R1-DumpAndYeet", "R1-DumpAndYeet.rcd");
   m_chooser.AddOption("R1-DumpAndYeet", "R1-DumpAndYeet.rcd");
   m_chooser.AddOption("R2-DumpAndYeet", "R2-DumpAndYeet.rcd");
@@ -56,6 +57,8 @@ void Robot::RobotInit()
   m_chooser.AddOption("B1", "B1.rcd");
   m_chooser.AddOption("B2", "B2.rcd");
   m_chooser.AddOption("B3", "B3.rcd");
+  driveMotorsLeft.SetInverted(true);
+  driveMotorsRight.SetInverted(true);
 
 
 

@@ -19,13 +19,13 @@ public:
     void intakeIn();
     void intakeEject();
     void intakeStop();
-    void startHandler()
-    {
+    //void startHandler()
+    //{
 
-        std::thread handler{&RoboStorage::tankHandler, this};
-        handler.detach();
+    //    std::thread handler{&RoboStorage::tankHandler, this};
+    //    handler.detach();
 
-    }
+    //}
     int getIntakeStatus() 
     {
       if(m_intakeMotor->Get() > 0)
@@ -50,13 +50,13 @@ private:
   frc::SpeedController* m_tankMotor;
 
     static constexpr double tankRaiseSpeed{0.75};
-    static constexpr double tankRaiseStart{1.0};
-    static constexpr double tankRaiseStop{0.5};
+    static constexpr double tankRaiseStart{0.3};
+    static constexpr double tankRaiseStop{-0.2};
     static constexpr double tankLowerSpeed{0.2};
     static constexpr double intakeInSpeed{-1.0};
     static constexpr double intakeEjectSpeed{1.0};
-    static constexpr double changeRate{0.01};
+    static constexpr double changeRate{0.012};
     bool manual{false};
-    bool m_raising{false};
+    bool m_raising{true};
 };
 #endif
