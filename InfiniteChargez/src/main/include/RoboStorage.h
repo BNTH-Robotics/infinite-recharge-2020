@@ -19,6 +19,7 @@ public:
     void intakeIn();
     void intakeEject();
     void intakeStop();
+    void tankHalt();
     //void startHandler()
     //{
 

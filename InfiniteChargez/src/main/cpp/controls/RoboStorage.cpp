@@ -5,15 +5,21 @@
 
     void RoboStorage::raise()
     {
-        manual = false;
-        m_raising = true;
-        std::cout << "raise\n";
+
+        //manual = false;
+        //m_raising = true;
+        //std::cout << "raise\n";
     }
 
     void RoboStorage::lower()
     {
-        manual = false;
-        m_raising = false;
+        //manual = false;
+        //m_raising = false;
+    }
+
+    void RoboStorage::tankHalt()
+    {
+        m_tankMotor->Set(0);
     }
 
     void RoboStorage::intakeIn()
