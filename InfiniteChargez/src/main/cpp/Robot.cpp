@@ -37,19 +37,13 @@ void Robot::RobotInit()
 {
   //leStorage.startHandler();
   m_chooser.SetDefaultOption("R1-DumpAndYeet", "R1-DumpAndYeet.rcd");
-  m_chooser.AddOption("R1-DumpAndYeet", "R1-DumpAndYeet.rcd");
-  m_chooser.AddOption("R2-DumpAndYeet", "R2-DumpAndYeet.rcd");
-  m_chooser.AddOption("R3-DumpAndYeet", "R3-DumpAndYeet.rcd");
-  m_chooser.AddOption("B1-DumpAndYeet", "B1-DumpAndYeet.rcd");
-  m_chooser.AddOption("B2-DumpAndYeet", "B2-DumpAndYeet.rcd");
-  m_chooser.AddOption("B3-DumpAndYeet", "B3-DumpAndYeet.rcd");
+  m_chooser.AddOption("1-DumpAndYeet", "R1-DumpAndYeet.rcd");
+  m_chooser.AddOption("2-DumpAndYeet", "R2-DumpAndYeet.rcd");
+  m_chooser.AddOption("3-DumpAndYeet", "R3-DumpAndYeet.rcd");
 
-  m_chooser.AddOption("R1-CrossTheLine", "R1-CrossTheLine.rcd");
-  m_chooser.AddOption("R2-CrossTheLine", "R2-CrossTheLine.rcd");
-  m_chooser.AddOption("R3-CrossTheLine", "R3-CrossTheLine.rcd");
-  m_chooser.AddOption("B1-CrossTheLine", "B1-CrossTheLine.rcd");
-  m_chooser.AddOption("B2-CrossTheLine", "B2-CrossTheLine.rcd");
-  m_chooser.AddOption("B3-CrossTheLine", "B3-CrossTheLine.rcd");
+  m_chooser.AddOption("1-CrossTheLine", "R1-CrossTheLine.rcd");
+  m_chooser.AddOption("2-CrossTheLine", "R2-CrossTheLine.rcd");
+  m_chooser.AddOption("3-CrossTheLine", "R3-CrossTheLine.rcd");
 
   //m_chooser.AddOption("R1", "R1.rcd");
   //m_chooser.AddOption("R2", "R2.rcd");
