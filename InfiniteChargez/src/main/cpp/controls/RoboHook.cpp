@@ -7,7 +7,7 @@
 
     void RoboHook::rewind()
     {
-        m_hookMotor->Set(hookDownSpeed);
+        //m_hookMotor->Set(hookDownSpeed);
     }
 
     void RoboHook::stop()
