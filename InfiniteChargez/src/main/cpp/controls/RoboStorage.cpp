@@ -5,6 +5,7 @@
 
     void RoboStorage::raise()
     {
+        m_tankMotor->Set(tankToggleUpSpeed);
 
         //manual = false;
         //m_raising = true;
@@ -13,6 +14,7 @@
 
     void RoboStorage::lower()
     {
+        m_tankMotor->Set(tankToggleDownSpeed);
         //manual = false;
         //m_raising = false;
     }
