@@ -6,6 +6,7 @@
 /*----------------------------------------------------------------------------*/
 
 #include "Robot.h"
+#include "FileConstants.h"
 
 #include <frc/BuiltInAccelerometer.h>
 #include <frc/Filesystem.h>
@@ -17,6 +18,7 @@
 
 #include <iostream>
 #include <thread>
+
 #include <cassert>
 void Robot::OdometryTests()
 {
@@ -33,6 +35,8 @@ Robot::Robot() : frc::TimedRobot{10_ms}
 
 void Robot::RobotInit()
 {
+  driveMotorsLeft.SetInverted(true);
+  driveMotorsRight.SetInverted(true);
   m_chooser.SetDefaultOption(kAutoNameDefault, kAutoNameDefault);
   m_chooser.AddOption("SquareTest.rcd", "SquareTest.rcd");
   m_chooser.AddOption("Yeet2AndScore.rcd", "Yeet2AndScore.rcd");

@@ -18,7 +18,6 @@ namespace utilities
 
         //std::string delta{""};
         //std::getline(*m_recordingFile, delta);
-
         //duration_t deltaTime{std::stod(delta)};
         
 

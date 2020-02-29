@@ -6,7 +6,6 @@
 /*----------------------------------------------------------------------------*/
 #ifndef YEET_LE_MOST_AMAZING_ROBOT_IN_THE_WORLD
 #define YEET_LE_MOST_AMAZING_ROBOT_IN_THE_WORLD
-
 #include "XboxInputHandler.h"
 #include "Pair2D.h"
 
@@ -52,7 +51,7 @@ private:
   using controller_t = frc::XboxController;
   //Automation Type Aliases
   using accelerometer_t = frc::BuiltInAccelerometer;
-  
+
   //Chrono Alisases
   using clock_t = std::chrono::steady_clock;
   using timePoint_t = std::chrono::steady_clock::time_point;
@@ -69,14 +68,14 @@ private:
      static constexpr int portDriveFrontRight{3};
      static constexpr int portDriveBackLeft{2};
      static constexpr int portDriveBackRight{4};
-     static constexpr int portIntakeLeft{5};
-     static constexpr int portIntakeRight{6};
-     static constexpr int portStorage{7};
+     static constexpr int portIntake{5};
+     static constexpr int portTank{7};
      static constexpr int portHook{8};
 
 
  public:
   Robot();
+  void checkAndExec();
   void OdometryTests();
   void RobotInit() override;
   void RobotPeriodic() override;
@@ -84,39 +83,38 @@ private:
   void AutonomousPeriodic() override;
   void TeleopInit() override;
   void TeleopPeriodic() override;
-  void checkAndExec();
 
   utilities::InputHandler& getInputHandler() {return leInputHandler;}
   private:
   bool isRecording{false}; //Really hacky, will remain until the deeper WPLIB api documentation can be discovered *Indiana Jones Music*
   bool recordingEnabled{true};
   long double meanDelta{0};
-  public:
+
+public:
   void TestPeriodic() override;
  private:
       //RobotDataPooints
     RoboData leRoboData{leGyroscope, leAccelerometer};
     RoboDrive leDrive{driveMotorsLeft, driveMotorsRight};
-    RoboStorage leStorage{intakeMotorLeft, intakeMotorRight};
+    RoboStorage leStorage{intakeMotor, tankMotor};
     RoboHook leHook{hookMotor};
 
      controller_t leController{controllerPort}; //Of epic dankness
      handler_t leInputHandler{};
   //Declare Motors
-     driveMotor_t driveMotorFrontLeft{portDriveFrontLeft};
-     driveMotor_t driveMotorFrontRight{portDriveFrontRight};
-     driveMotor_t driveMotorBackLeft{portDriveBackLeft};
-     driveMotor_t driveMotorBackRight{portDriveBackRight};
+  driveMotor_t driveMotorFrontLeft{portDriveFrontLeft};
+  driveMotor_t driveMotorFrontRight{portDriveFrontRight};
+  driveMotor_t driveMotorBackLeft{portDriveBackLeft};
+  driveMotor_t driveMotorBackRight{portDriveBackRight};
 
-     intakeMotor_t intakeMotorLeft{portIntakeLeft};
-     intakeMotor_t intakeMotorRight{portIntakeRight};
+     intakeMotor_t intakeMotor{portIntake};
 
-     storageMotor_t storageMotor{portStorage};
+     storageMotor_t tankMotor{portTank};
 
-     hookMotor_t hookMotor{portHook};
-     //Non-motor components
-     gyroscope_t leGyroscope{};
-     accelerometer_t leAccelerometer{};
+  hookMotor_t hookMotor{portHook};
+  //Non-motor components
+  gyroscope_t leGyroscope{};
+  accelerometer_t leAccelerometer{};
 
   //Declare Motor Groups
     frc::SpeedControllerGroup driveMotorsLeft{driveMotorFrontLeft, driveMotorBackLeft};
@@ -127,17 +125,15 @@ private:
     void recordActionsExec(utilities::XboxInputHandler &leInputHandler);
 
     //Input checking funcitons
+    static constexpr double triggerIntakeTolerance{0.9};
     void recordActionsExec(utilities::XboxInputHandler &leInputHandler, duration_t delta);
     void joystickPosition(utilities::XboxInputHandler::joystick_t &&joystickLeft, utilities::XboxInputHandler::joystick_t &&joystickRight);
+    void leftBumper();
+    void rightBumper();
     void buttonA();
     void buttonB();
-    void buttonX();
-    void buttonY();
-    void bumper();  
-    //Movement Functions
-    void intakeIn();
-    void intakeOut();
-    void intakeStop();
+    void triggerAndRightJoystick();
+    void XAndLeftRightBumper();
   //Declare Time Variables
   frc::SendableChooser<std::string> m_chooser;
   const std::string kAutoNameDefault = "InputRecord.rcd";
