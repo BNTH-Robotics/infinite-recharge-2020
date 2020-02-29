@@ -51,12 +51,12 @@ void Robot::RobotInit()
   m_chooser.AddOption("B2-CrossTheLine", "B2-CrossTheLine.rcd");
   m_chooser.AddOption("B3-CrossTheLine", "B3-CrossTheLine.rcd");
 
-  m_chooser.AddOption("R1", "R1.rcd");
-  m_chooser.AddOption("R2", "R2.rcd");
-  m_chooser.AddOption("R3", "R3.rcd");
-  m_chooser.AddOption("B1", "B1.rcd");
-  m_chooser.AddOption("B2", "B2.rcd");
-  m_chooser.AddOption("B3", "B3.rcd");
+  //m_chooser.AddOption("R1", "R1.rcd");
+  //m_chooser.AddOption("R2", "R2.rcd");
+  //m_chooser.AddOption("R3", "R3.rcd");
+  //m_chooser.AddOption("B1", "B1.rcd");
+  //m_chooser.AddOption("B2", "B2.rcd");
+  //m_chooser.AddOption("B3", "B3.rcd");
   driveMotorsLeft.SetInverted(true);
   driveMotorsRight.SetInverted(true);
 
