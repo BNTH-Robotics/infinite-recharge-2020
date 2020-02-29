@@ -92,7 +92,7 @@ void Robot::RobotPeriodic()
  */
 void Robot::AutonomousInit()
 {
-  if (m_recordFile.is_open)
+  if (m_recordFile.is_open())
   {
     m_recordFile.close();
   }
