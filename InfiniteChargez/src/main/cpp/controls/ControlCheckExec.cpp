@@ -71,6 +71,10 @@
         {
         leStorage.lower();
         }
+        else
+        {
+         leStorage.tankHalt();
+        }
     }
 
     void Robot::buttonB()
@@ -79,6 +83,11 @@
         {
         leStorage.raise();
         }
+        else
+        {
+            leStorage.tankHalt();
+        }
+        
     }
 
     void Robot::triggerAndRightJoystick()
