@@ -95,6 +95,7 @@ void Robot::RobotPeriodic()
  */
 void Robot::AutonomousInit()
 {
+  frc::SmartDashboard::PutData("Auto Modes", &m_chooser);
   if (m_recordFile.is_open())
   {
     m_recordFile.close();
@@ -134,6 +135,7 @@ void Robot::AutonomousPeriodic()
 
 void Robot::TeleopInit()
 {
+  frc::SmartDashboard::PutData("Auto Modes", &m_chooser);
   m_leRecordScribe.stopLoadedRecording();
   m_recordFile.open(inputRecordFileName + m_chooser.GetSelected());
   leRoboData.initSnap();
