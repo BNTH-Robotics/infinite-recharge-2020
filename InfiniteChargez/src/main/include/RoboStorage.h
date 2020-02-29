@@ -50,7 +50,7 @@ private:
   frc::SpeedController* m_intakeMotor;
   frc::SpeedController* m_tankMotor;
     static constexpr double tankToggleUpSpeed{.6};
-    static constexpr double tankToggleDownSpeed{-0.6};
+    static constexpr double tankToggleDownSpeed{-0.8};
     static constexpr double tankRaiseSpeed{0.75};
     static constexpr double tankRaiseStart{0.3};
     static constexpr double tankRaiseStop{-0.2};

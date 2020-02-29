@@ -36,7 +36,7 @@ Robot::Robot() : frc::TimedRobot{10_ms}
 void Robot::RobotInit()
 {
   //leStorage.startHandler();
-  m_chooser.SetDefaultOption("R1-DumpAndYeet", "R1-DumpAndYeet.rcd");
+  m_chooser.SetDefaultOption("1-DumpAndYeet", "R1-DumpAndYeet.rcd");
   m_chooser.AddOption("1-DumpAndYeet", "R1-DumpAndYeet.rcd");
   m_chooser.AddOption("2-DumpAndYeet", "R2-DumpAndYeet.rcd");
   m_chooser.AddOption("3-DumpAndYeet", "R3-DumpAndYeet.rcd");
