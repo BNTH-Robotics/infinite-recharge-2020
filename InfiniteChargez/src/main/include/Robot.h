@@ -60,20 +60,20 @@ private:
   using handler_t = utilities::XboxInputHandler;
   private:
   //Ports for Motors and Controllers
-private:
-  static constexpr int controllerPort{0};
-  static constexpr int leJoystickLeftPort{0};
+ private:
+     static constexpr int controllerPort{0};
+     static constexpr int leJoystickLeftPort{0};
 
-  static constexpr int portDriveFrontLeft{1};
-  static constexpr int portDriveFrontRight{3};
-  static constexpr int portDriveBackLeft{2};
-  static constexpr int portDriveBackRight{4};
-  static constexpr int portIntakeLeft{5};
-  static constexpr int portIntakeRight{6};
-  static constexpr int portStorage{7};
-  static constexpr int portHook{8};
+     static constexpr int portDriveFrontLeft{1};
+     static constexpr int portDriveFrontRight{3};
+     static constexpr int portDriveBackLeft{2};
+     static constexpr int portDriveBackRight{4};
+     static constexpr int portIntake{5};
+     static constexpr int portTank{7};
+     static constexpr int portHook{8};
 
-public:
+
+ public:
   Robot();
   void checkAndExec();
   void OdometryTests();
@@ -96,7 +96,7 @@ public:
       //RobotDataPooints
     RoboData leRoboData{leGyroscope, leAccelerometer};
     RoboDrive leDrive{driveMotorsLeft, driveMotorsRight};
-    RoboStorage leStorage{intakeMotorLeft, intakeMotorRight};
+    RoboStorage leStorage{intakeMotor, tankMotor};
     RoboHook leHook{hookMotor};
 
      controller_t leController{controllerPort}; //Of epic dankness
@@ -107,10 +107,9 @@ public:
   driveMotor_t driveMotorBackLeft{portDriveBackLeft};
   driveMotor_t driveMotorBackRight{portDriveBackRight};
 
-  intakeMotor_t intakeMotorLeft{portIntakeLeft};
-  intakeMotor_t intakeMotorRight{portIntakeRight};
+     intakeMotor_t intakeMotor{portIntake};
 
-  storageMotor_t storageMotor{portStorage};
+     storageMotor_t tankMotor{portTank};
 
   hookMotor_t hookMotor{portHook};
   //Non-motor components
@@ -126,17 +125,15 @@ public:
     void recordActionsExec(utilities::XboxInputHandler &leInputHandler);
 
     //Input checking funcitons
+    static constexpr double triggerIntakeTolerance{0.9};
     void recordActionsExec(utilities::XboxInputHandler &leInputHandler, duration_t delta);
     void joystickPosition(utilities::XboxInputHandler::joystick_t &&joystickLeft, utilities::XboxInputHandler::joystick_t &&joystickRight);
+    void leftBumper();
+    void rightBumper();
     void buttonA();
     void buttonB();
-    void buttonX();
-    void buttonY();
-    void bumper();  
-    //Movement Functions
-    void intakeIn();
-    void intakeOut();
-    void intakeStop();
+    void triggerAndRightJoystick();
+    void XAndLeftRightBumper();
   //Declare Time Variables
   frc::SendableChooser<std::string> m_chooser;
   const std::string kAutoNameDefault = "R1-DumpAndYeet";
