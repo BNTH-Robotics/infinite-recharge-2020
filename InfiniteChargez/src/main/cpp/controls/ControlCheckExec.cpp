@@ -71,6 +71,10 @@
         {
         leStorage.lower();
         }
+        else if (leInputHandler.getButtonBState())
+        {
+        leStorage.raise();
+        }
         else
         {
          leStorage.tankHalt();
@@ -79,14 +83,7 @@
 
     void Robot::buttonB()
     {
-        if (leInputHandler.getButtonBState())
-        {
-        leStorage.raise();
-        }
-        else
-        {
-            leStorage.tankHalt();
-        }
+        
         
     }
 
