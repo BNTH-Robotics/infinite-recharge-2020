@@ -92,9 +92,9 @@ void Robot::RobotPeriodic()
  */
 void Robot::AutonomousInit()
 {
-  leDrive.setMovementMap(utilities::Pair2D<double>{0.5, 0.0});
-  std::this_thread::sleep_for(std::chrono::seconds(1));
-  leDrive.setMovementMap(utilities::Pair2D<double>{0.0, 0.0});
+  //leDrive.setMovementMap(utilities::Pair2D<double>{0.5, 0.0});
+  //std::this_thread::sleep_for(std::chrono::seconds(1));
+  //leDrive.setMovementMap(utilities::Pair2D<double>{0.0, 0.0});
 
   //std::cout << m_chooser.GetSelected() << '\n';
   //if (m_recordFile.is_open())
