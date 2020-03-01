@@ -31,6 +31,8 @@ void Robot::OdometryTests()
 Robot::Robot() : frc::TimedRobot{10_ms} 
                  
 {
+  hookMotor.SetNeutralMode(ctre::phoenix::motorcontrol::NeutralMode::Brake);
+  
 }
 
 void Robot::RobotInit()

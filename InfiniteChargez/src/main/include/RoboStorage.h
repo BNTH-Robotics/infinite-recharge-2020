@@ -16,8 +16,8 @@ public:
     {}
     void raise();
     void lower();
-    void intakeIn();
-    void intakeEject();
+    void intakeIn(double slowdown = 0);
+    void intakeEject(double slowdown = 0);
     void intakeStop();
     void tankHalt();
     //void startHandler()

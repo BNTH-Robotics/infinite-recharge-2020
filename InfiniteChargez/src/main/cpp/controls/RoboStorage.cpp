@@ -24,15 +24,15 @@
         m_tankMotor->Set(0);
     }
 
-    void RoboStorage::intakeIn(double slowdown = 0)
+    void RoboStorage::intakeIn(double slowdown)
     {
         std::cout << "in\n";
         m_intakeMotor->Set(intakeInSpeed * (1 - slowdown));
     }
 
-    void RoboStorage::intakeEject(double slowdown = 0)
+    void RoboStorage::intakeEject(double slowdown)
     {
-        m_intakeMotor->Set(intakeEjectSpeed * (intakeEjectSpeed - slowdown));
+        m_intakeMotor->Set(intakeEjectSpeed * (1 - slowdown));
     }
 
     void RoboStorage::intakeStop()

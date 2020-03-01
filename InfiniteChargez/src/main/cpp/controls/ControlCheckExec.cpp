@@ -46,7 +46,7 @@
         {
             //if(!(leStorage.getIntakeStatus() == -1))
             //{
-            leStorage.intakeIn();
+            leStorage.intakeIn(leInputHandler.getTriggerRight());
             //}
             //else if (leStorage.getIntakeStatus() == -1)
             //{
@@ -60,7 +60,7 @@
     {
         if (leInputHandler.getBumperRightState() && !leInputHandler.getButtonXState())
         {
-        leStorage.intakeEject();
+        leStorage.intakeEject(leInputHandler.getTriggerRight());
         }
     }
 
@@ -88,7 +88,7 @@
 
     void Robot::triggerAndRightJoystick()
     {
-        if (leInputHandler.getTriggerRight() > triggerIntakeTolerance)
+        if (leInputHandler.getTriggerLeft() > triggerIntakeTolerance)
         {
         double rightJoystickY = -leInputHandler.getJoystickRight().y;
         leStorage.setTankMotorManual(rightJoystickY);
