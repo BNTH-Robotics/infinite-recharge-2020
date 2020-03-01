@@ -102,6 +102,8 @@ void Robot::AutonomousInit()
   //  m_recordFile.close();
   //}
   //m_recordReadFile.open(inputRecordFileName + m_chooser.GetSelected());
+  //m_recordReadFile.clear()
+  //m_recordReadFile.seekg(0, ios::beg)
   //assert(m_recordReadFile.is_open());
 
   //m_leRecordScribe.loadRecording(m_recordReadFile);
