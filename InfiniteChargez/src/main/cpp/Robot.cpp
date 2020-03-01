@@ -96,22 +96,22 @@ void Robot::AutonomousInit()
   //std::this_thread::sleep_for(std::chrono::seconds(1));
   //leDrive.setMovementMap(utilities::Pair2D<double>{0.0, 0.0});
 
-  //std::cout << m_chooser.GetSelected() << '\n';
-  //if (m_recordFile.is_open())
-  //{
-  //  m_recordFile.close();
-  //}
-  //m_recordReadFile.open(inputRecordFileName + m_chooser.GetSelected());
-  //m_recordReadFile.clear()
-  //m_recordReadFile.seekg(0, ios::beg)
-  //assert(m_recordReadFile.is_open());
+  std::cout << m_chooser.GetSelected() << '\n';
+  if (m_recordFile.is_open())
+  {
+    m_recordFile.close();
+  }
+  m_recordReadFile.open(inputRecordFileName + m_chooser.GetSelected());
+  m_recordReadFile.clear();
+  m_recordReadFile.seekg(0, std::ios::beg);
+  assert(m_recordReadFile.is_open());
 
-  //m_leRecordScribe.loadRecording(m_recordReadFile);
-  //m_leRecordScribe.playLoadedRecordingToAndExec(this);
+  m_leRecordScribe.loadRecording(m_recordReadFile);
+  m_leRecordScribe.playLoadedRecordingToAndExec(this);
 
-  //m_autoSelected = m_chooser.GetSelected();
-  //// m_autoSelected = SmartDashboard::GetString("Auto Selector",
-  ////     kAutoNameDefault);
+  m_autoSelected = m_chooser.GetSelected();
+  // m_autoSelected = SmartDashboard::GetString("Auto Selector",
+  //     kAutoNameDefault);
   //std::cout << "Auto selected: " << m_autoSelected << std::endl;
 
   //if (m_autoSelected == kAutoNameCustom)
