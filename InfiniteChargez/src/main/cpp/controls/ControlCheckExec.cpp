@@ -42,7 +42,6 @@
 
     void Robot::leftBumper()
     {
-        std::cout << leStorage.getIntakeStatus() << '\n';
         if (leInputHandler.getBumperLeftState() && !leInputHandler.getButtonXState())
         {
             //if(!(leStorage.getIntakeStatus() == -1))

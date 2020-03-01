@@ -55,8 +55,8 @@ private:
     static constexpr double tankRaiseStart{0.3};
     static constexpr double tankRaiseStop{-0.2};
     static constexpr double tankLowerSpeed{0.2};
-    static constexpr double intakeInSpeed{-0.7};
-    static constexpr double intakeEjectSpeed{0.7};
+    static constexpr double intakeInSpeed{0.7};
+    static constexpr double intakeEjectSpeed{-0.7};
     static constexpr double changeRate{0.012};
     bool manual{false};
     bool m_raising{true};
