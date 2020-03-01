@@ -48,7 +48,6 @@
     void RoboStorage::tankHandler()
     {
         double frame{0};
-        double motorVal{0};
         while(true)
         {
            if (!manual) 
