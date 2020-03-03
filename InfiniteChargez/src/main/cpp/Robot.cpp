@@ -32,6 +32,7 @@ Robot::Robot() : frc::TimedRobot{10_ms}
                  
 {
   hookMotor.SetNeutralMode(ctre::phoenix::motorcontrol::NeutralMode::Brake);
+  tankMotor.SetNeutralMode(ctre::phoenix::motorcontrol::NeutralMode::Brake);
   
 }
 
