@@ -15,11 +15,6 @@
                 std::cout << "Hook advance \n";
                 leHook.advance();
             }
-            else if(leInputHandler.getBumperRightState())
-            {
-                std::cout << "Hook rewind \n";
-                leHook.rewind();
-            }
             else
             {
                 leHook.stop();
@@ -33,10 +28,6 @@
         buttonA();
         buttonB();
         triggerAndRightJoystick();
-        XAndLeftRightBumper();
-
-
-
     }
     
     void Robot::joystickPosition(utilities::XboxInputHandler::joystick_t &&joystickLeft, utilities::XboxInputHandler::joystick_t &&joystickRight)
