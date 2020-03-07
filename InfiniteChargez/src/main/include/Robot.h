@@ -128,9 +128,6 @@ public:
     static constexpr double triggerIntakeTolerance{0.9};
     void recordActionsExec(utilities::XboxInputHandler &leInputHandler, duration_t delta);
     void joystickPosition(utilities::XboxInputHandler::joystick_t &&joystickLeft, utilities::XboxInputHandler::joystick_t &&joystickRight);
-    void buttonA();
-    void buttonB();
-    void triggerAndRightJoystick();
   //Declare Time Variables
   frc::SendableChooser<std::string> m_chooser;
   const std::string kAutoNameDefault = "R1-DumpAndYeet";

@@ -20,6 +20,13 @@
                 leHook.stop();
             }
         }
+        else if (leInputHandler.getTriggerLeft() > triggerIntakeTolerance)
+        {
+            {
+                double rightJoystickY = -leInputHandler.getJoystickRight().y;
+                leStorage.setTankMotorManual(rightJoystickY);
+            }
+        }
         else
         {
             if (leInputHandler.getBumperLeftState() && !leInputHandler.getButtonXState())
@@ -38,14 +45,23 @@
             {
                 leStorage.intakeEject(leInputHandler.getTriggerRight());
             }
+            if (leInputHandler.getButtonAState())
+            {
+                leStorage.lower();
+            }
+            else if (leInputHandler.getButtonBState())
+            {
+                leStorage.raise();
+            }
+            else
+            {
+                leStorage.tankHalt();
+            }
         }
         
 
         std::cout << leInputHandler.getJoystickLeft().x << '\n';
         joystickPosition(leInputHandler.getJoystickLeft(), leInputHandler.getJoystickRight());
-        buttonA();
-        buttonB();
-        triggerAndRightJoystick();
     }
     
     void Robot::joystickPosition(utilities::XboxInputHandler::joystick_t &&joystickLeft, utilities::XboxInputHandler::joystick_t &&joystickRight)
@@ -67,35 +83,6 @@
 
         leDrive.setMovementMap(leInputHandler.getJoystickLeft());
     }
-    void Robot::buttonA()
-    {
-        if (leInputHandler.getButtonAState())
-        {
-        leStorage.lower();
-        }
-        else if (leInputHandler.getButtonBState())
-        {
-        leStorage.raise();
-        }
-        else
-        {
-         leStorage.tankHalt();
-        }
-    }
 
-    void Robot::buttonB()
-    {
-        
-        
-    }
-
-    void Robot::triggerAndRightJoystick()
-    {
-        if (leInputHandler.getTriggerLeft() > triggerIntakeTolerance)
-        {
-        double rightJoystickY = -leInputHandler.getJoystickRight().y;
-        leStorage.setTankMotorManual(rightJoystickY);
-        }
-    }
 
 
