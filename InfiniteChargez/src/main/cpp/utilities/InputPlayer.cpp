@@ -60,13 +60,13 @@ namespace utilities
             std::this_thread::sleep_for((sleepTime));
             probablyARobot->getInputHandler() = snapshot.substr(i);
             probablyARobot->checkAndExec();
-            std::cout << snapshot << '\n';
+            //std::cout << snapshot << '\n';
             //overheadTime -= delta;
             now = clock_t::now();
             executionTime = std::chrono::duration_cast<duration_t>(now - lastSnap);
             lastSnap = now;
-            std::cout << "DeltaInput: " << sleepTime.count() << '\n';
-            std::cout << (executionTime).count() << '\n';
+            //std::cout << "DeltaInput: " << sleepTime.count() << '\n';
+            //std::cout << (executionTime).count() << '\n';
             overheadTime = executionTime - sleepTime;
         }
     }
