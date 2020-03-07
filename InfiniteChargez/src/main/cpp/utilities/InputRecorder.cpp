@@ -45,7 +45,7 @@ namespace utilities
 
     while (std::getline(m_recordingBuffer, line))
         {
-            std::cout << line << '\n';
+            //std::cout << line << '\n';
             *m_recording << line << '\n';
         }
         
