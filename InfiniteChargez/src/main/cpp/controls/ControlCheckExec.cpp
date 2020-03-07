@@ -77,9 +77,6 @@
                 leDrive.setMovementMap(leInputHandler.getJoystickLeft());
             }
         }
-        
-
-        std::cout << leInputHandler.getJoystickLeft().x << '\n';
     }
     
     
