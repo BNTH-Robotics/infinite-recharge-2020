@@ -9,7 +9,9 @@ namespace utilities
 {
     void InputRecorder::designateFile(std::ofstream &recordingFile)
     {
+        resetBuffer();
         m_recording = &recordingFile;
+        std::cout << "Designated\n";
     }
 
     void InputRecorder::recordFrom(HandlesChecksAndExecs &probablyARobot)

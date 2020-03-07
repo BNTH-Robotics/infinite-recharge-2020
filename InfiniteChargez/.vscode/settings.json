@@ -24,6 +24,7 @@
     "functional": "cpp",
     "*.inc": "cpp",
     "chrono": "cpp",
-    "algorithm": "cpp"
+    "algorithm": "cpp",
+    "thread": "cpp"
   }
 }

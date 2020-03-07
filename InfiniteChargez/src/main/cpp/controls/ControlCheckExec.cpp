@@ -7,7 +7,6 @@
 
     void Robot::checkAndExec()
     {
-        std::cout << leInputHandler.getJoystickLeft().x << '\n';
         joystickPosition(leInputHandler.getJoystickLeft(), leInputHandler.getJoystickRight());
         rightBumper();
         leftBumper();
