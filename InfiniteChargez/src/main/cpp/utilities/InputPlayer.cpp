@@ -7,10 +7,10 @@
 
 namespace utilities
 {
-    void InputPlayer::load(std::ifstream &recordingFile)
+    void InputPlayer::load(std::ifstream *recordingFile)
     {
-        m_recordingFile = &recordingFile;
-
+        std::cout << "New file loaded\n";
+        m_recordingFile = recordingFile;
     }
 
     void InputPlayer::playToAndExec(HandlesChecksAndExecs *probablyARobot)
@@ -69,6 +69,7 @@ namespace utilities
             //std::cout << (executionTime).count() << '\n';
             overheadTime = executionTime - sleepTime;
         }
+        std::cout << "Done Playing \n";
     }
 
 }

@@ -93,6 +93,7 @@ void Robot::RobotPeriodic()
  */
 void Robot::AutonomousInit()
 {
+  m_leRecordScribe.stopLoadedRecording();
   std::string chosen{m_chooser.GetSelected()};
   if (chosen == "Emergency")
   {
