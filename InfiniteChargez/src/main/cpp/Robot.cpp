@@ -146,9 +146,7 @@ void Robot::AutonomousPeriodic()
 
 void Robot::TeleopInit()
 {
-  std::cout << m_chooser.GetSelected() << '\n';
-  m_leRecordScribe.stopLoadedRecording();
-  m_recordFile.open(inputRecordFileName + m_chooser.GetSelected());
+  
   leRoboData.initSnap();
 }
 
