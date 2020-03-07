@@ -128,8 +128,6 @@ public:
     static constexpr double triggerIntakeTolerance{0.9};
     void recordActionsExec(utilities::XboxInputHandler &leInputHandler, duration_t delta);
     void joystickPosition(utilities::XboxInputHandler::joystick_t &&joystickLeft, utilities::XboxInputHandler::joystick_t &&joystickRight);
-    void leftBumper();
-    void rightBumper();
     void buttonA();
     void buttonB();
     void triggerAndRightJoystick();

@@ -20,11 +20,29 @@
                 leHook.stop();
             }
         }
+        else
+        {
+            if (leInputHandler.getBumperLeftState() && !leInputHandler.getButtonXState())
+            {
+                //if(!(leStorage.getIntakeStatus() == -1))
+                //{
+                leStorage.intakeIn(leInputHandler.getTriggerRight());
+                //}
+                //else if (leStorage.getIntakeStatus() == -1)
+                //{
+                //leStorage.intakeStop();
+                //}
+
+            }
+            else if (leInputHandler.getBumperRightState() && !leInputHandler.getButtonXState())
+            {
+                leStorage.intakeEject(leInputHandler.getTriggerRight());
+            }
+        }
+        
 
         std::cout << leInputHandler.getJoystickLeft().x << '\n';
         joystickPosition(leInputHandler.getJoystickLeft(), leInputHandler.getJoystickRight());
-        rightBumper();
-        leftBumper();
         buttonA();
         buttonB();
         triggerAndRightJoystick();
@@ -49,31 +67,6 @@
 
         leDrive.setMovementMap(leInputHandler.getJoystickLeft());
     }
-
-    void Robot::leftBumper()
-    {
-        if (leInputHandler.getBumperLeftState() && !leInputHandler.getButtonXState())
-        {
-            //if(!(leStorage.getIntakeStatus() == -1))
-            //{
-            leStorage.intakeIn(leInputHandler.getTriggerRight());
-            //}
-            //else if (leStorage.getIntakeStatus() == -1)
-            //{
-            //leStorage.intakeStop();
-            //}
-            
-        }
-    }
-
-    void Robot::rightBumper()
-    {
-        if (leInputHandler.getBumperRightState() && !leInputHandler.getButtonXState())
-        {
-        leStorage.intakeEject(leInputHandler.getTriggerRight());
-        }
-    }
-
     void Robot::buttonA()
     {
         if (leInputHandler.getButtonAState())
