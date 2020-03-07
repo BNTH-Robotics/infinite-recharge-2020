@@ -16,7 +16,7 @@ namespace utilities
     public:
         InputPlayer () {};
 
-        void load(std::ifstream &recordingFile);
+        void load(std::ifstream *recordingFile);
         //void playTo(InputHandler &inputhandler);
         void playToAndExec(HandlesChecksAndExecs *probablyARobot);
         void stop(){m_playbackEnabled = false;}
