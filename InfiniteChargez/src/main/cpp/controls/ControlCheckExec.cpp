@@ -7,6 +7,25 @@
 
     void Robot::checkAndExec()
     {
+        //Output tree X will switch the controlls to "Hook Mode"
+        if (leInputHandler.getButtonXState())
+        {
+            if(leInputHandler.getBumperLeftState())
+            {
+                std::cout << "Hook advance \n";
+                leHook.advance();
+            }
+            else if(leInputHandler.getBumperRightState())
+            {
+                std::cout << "Hook rewind \n";
+                leHook.rewind();
+            }
+            else
+            {
+                leHook.stop();
+            }
+        }
+
         std::cout << leInputHandler.getJoystickLeft().x << '\n';
         joystickPosition(leInputHandler.getJoystickLeft(), leInputHandler.getJoystickRight());
         rightBumper();
@@ -95,25 +114,4 @@
         }
     }
 
-    void Robot::XAndLeftRightBumper()
-    {
-        if (leInputHandler.getButtonXState())
-        {
-            if(leInputHandler.getBumperLeftState())
-            {
-                std::cout << "Hook advance \n";
-                leHook.advance();
-            }
-            else if(leInputHandler.getBumperRightState())
-            {
-                std::cout << "Hook rewind \n";
-                leHook.rewind();
-            }
-            else
-            {
-                leHook.stop();
-            }
-            
-        }
-    }
 

@@ -133,7 +133,6 @@ public:
     void buttonA();
     void buttonB();
     void triggerAndRightJoystick();
-    void XAndLeftRightBumper();
   //Declare Time Variables
   frc::SendableChooser<std::string> m_chooser;
   const std::string kAutoNameDefault = "R1-DumpAndYeet";
