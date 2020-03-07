@@ -38,7 +38,7 @@ Robot::Robot() : frc::TimedRobot{10_ms}
 void Robot::RobotInit()
 {
   //leStorage.startHandler();
-  m_chooser.SetDefaultOption("1-DumpAndYeet", "R1-DumpAndYeet.rcd");
+  m_chooser.SetDefaultOption("Emergency-Forward and Stop", "Emergency");
   m_chooser.AddOption("1-DumpAndYeet", "R1-DumpAndYeet.rcd");
   m_chooser.AddOption("2-DumpAndYeet", "R2-DumpAndYeet.rcd");
   m_chooser.AddOption("3-DumpAndYeet", "R3-DumpAndYeet.rcd");
@@ -46,6 +46,7 @@ void Robot::RobotInit()
   m_chooser.AddOption("1-CrossTheLine", "R1-CrossTheLine.rcd");
   m_chooser.AddOption("2-CrossTheLine", "R2-CrossTheLine.rcd");
   m_chooser.AddOption("3-CrossTheLine", "R3-CrossTheLine.rcd");
+  m_chooser.AddOption("Emergency-Forward and Stop", "Emergency");
 
   //m_chooser.AddOption("R1", "R1.rcd");
   //m_chooser.AddOption("R2", "R2.rcd");
@@ -91,9 +92,16 @@ void Robot::RobotPeriodic()
  */
 void Robot::AutonomousInit()
 {
-  //leDrive.setMovementMap(utilities::Pair2D<double>{0.5, 0.0});
-  //std::this_thread::sleep_for(std::chrono::seconds(1));
-  //leDrive.setMovementMap(utilities::Pair2D<double>{0.0, 0.0});
+  std::string chosen{m_chooser.GetSelected()};
+  if (chosen == "Emergency")
+  {
+    leDrive.setMovementMap(utilities::Pair2D<double>{0.5, 0.0});
+    std::this_thread::sleep_for(std::chrono::seconds(1));
+    leDrive.setMovementMap(utilities::Pair2D<double>{0.0, 0.0});
+  }
+  else
+  {
+  
 
   std::cout << m_chooser.GetSelected() << '\n';
   if (m_recordFile.is_open())
@@ -121,6 +129,7 @@ void Robot::AutonomousInit()
   //{
   //  // Default Auto goes here
   //}
+  }
 }
 
 void Robot::AutonomousPeriodic()
