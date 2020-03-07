@@ -29,7 +29,7 @@
         }
         else
         {
-            if (leInputHandler.getBumperLeftState() && !leInputHandler.getButtonXState())
+            if (leInputHandler.getBumperLeftState())
             {
                 //if(!(leStorage.getIntakeStatus() == -1))
                 //{
@@ -41,7 +41,7 @@
                 //}
 
             }
-            else if (leInputHandler.getBumperRightState() && !leInputHandler.getButtonXState())
+            else if (leInputHandler.getBumperRightState())
             {
                 leStorage.intakeEject(leInputHandler.getTriggerRight());
             }
