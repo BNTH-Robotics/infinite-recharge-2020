@@ -111,8 +111,8 @@ void Robot::AutonomousInit()
     std::cout << "Closed Open File \n";
     m_recordFile.close();
   }
-  m_recordReadFile.open(inputRecordFileName + m_chooser.GetSelected());
   m_recordReadFile.clear();
+  m_recordReadFile.open(inputRecordFileName + m_chooser.GetSelected());
   m_recordReadFile.seekg(0, std::ios::beg);
   assert(m_recordReadFile.is_open());
 
