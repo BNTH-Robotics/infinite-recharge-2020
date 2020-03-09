@@ -150,6 +150,7 @@ void Robot::AutonomousPeriodic()
 void Robot::TeleopInit()
 {
   
+  m_leRecordScribe.stopLoadedRecording();
   leRoboData.initSnap();
 }
 
