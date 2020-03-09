@@ -64,6 +64,7 @@ model {
                 }
                 exportedHeaders {
                     srcDir 'src/main/include'
+                    srcDir 'src/main/include/Utilities'
                     if (includeSrcInIncludeRoot) {
                         srcDir 'src/main/cpp'
                     }
