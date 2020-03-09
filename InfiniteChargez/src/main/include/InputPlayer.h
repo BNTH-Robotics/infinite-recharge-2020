@@ -27,7 +27,7 @@ namespace utilities
         timepoint_t m_lastSnap;
         bool m_playbackEnabled;
 
-        //void playRecordingExec(HandlesChecksAndExecs *probablyARobot, duration_t delta);
+        void playRecordingExec(HandlesChecksAndExecs *probablyARobot, duration_t delta);
         void playRecordingExec(HandlesChecksAndExecs *probablyARobot);
     };
 }

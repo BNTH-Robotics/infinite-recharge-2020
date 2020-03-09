@@ -22,21 +22,21 @@ namespace utilities
         
 
 
-        m_recordingThread = std::thread{&InputPlayer::playRecordingExec, this, probablyARobot};
+        m_recordingThread = std::thread{static_cast<void (InputPlayer::*)(HandlesChecksAndExecs *)>(&InputPlayer::playRecordingExec), this, probablyARobot};
         m_recordingThread.detach();
 
     }
     
-    //void InputPlayer::playRecordingExec(HandlesChecksAndExecs *probablyARobot, duration_t delta)
-    //{
-    //    std::string snapshot{""};
-    //    while(std::getline(*m_recordingFile, snapshot))
-    //    {
-    //        probablyARobot->getInputHandler() = snapshot;
-    //        probablyARobot->checkAndExec();
-    //        std::this_thread::sleep_for(delta);
-    //    }
-    //}
+    void InputPlayer::playRecordingExec(HandlesChecksAndExecs *probablyARobot, duration_t delta)
+    {
+        std::string snapshot{""};
+        while(std::getline(*m_recordingFile, snapshot))
+        {
+            probablyARobot->getInputHandler() = snapshot;
+            probablyARobot->checkAndExec();
+            std::this_thread::sleep_for(delta);
+        }
+    }
 
     void InputPlayer::playRecordingExec(HandlesChecksAndExecs *probablyARobot)
     {
