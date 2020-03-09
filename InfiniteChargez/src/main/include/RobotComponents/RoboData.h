@@ -15,9 +15,9 @@ class RoboData
     using accelerometer_t = frc::BuiltInAccelerometer;
     using gyroscope_t = frc::ADIS16448_IMU;
 
-public:
+    public:
     RoboData(gyroscope_t &Gyroscope, accelerometer_t &Accelerometer) :
-        leGyroscope{&Gyroscope}, leAccelerometer{&Accelerometer} {}
+	leGyroscope{&Gyroscope}, leAccelerometer{&Accelerometer} {}
 
     void updatePos(duration_t delta);
 
@@ -25,13 +25,13 @@ public:
 
     duration_t calcAndGetTimeDelta()
     {
-        timepoint_t now = clock_t::now();
-        duration_t delta{std::chrono::duration_cast<duration_t>(now - lastSnap)};
-        lastSnap = now;
-        return delta;
+	timepoint_t now = clock_t::now();
+	duration_t delta{std::chrono::duration_cast<duration_t>(now - lastSnap)};
+	lastSnap = now;
+	return delta;
     }
 
-private:
+    private:
 
     gyroscope_t *leGyroscope;
     accelerometer_t *leAccelerometer;
