@@ -106,13 +106,13 @@ void Robot::AutonomousInit()
   
 
   std::cout << m_chooser.GetSelected() << '\n';
-  if (m_recordFile.is_open())
+  if (m_recordReadFile.is_open())
   {
     std::cout << "Closed Open File \n";
-    m_recordFile.close();
+    m_recordReadFile.close();
   }
-  m_recordReadFile.open(inputRecordFileName + m_chooser.GetSelected());
   m_recordReadFile.clear();
+  m_recordReadFile.open(inputRecordFileName + m_chooser.GetSelected());
   m_recordReadFile.seekg(0, std::ios::beg);
   assert(m_recordReadFile.is_open());
 
@@ -150,6 +150,7 @@ void Robot::AutonomousPeriodic()
 void Robot::TeleopInit()
 {
   
+  m_leRecordScribe.stopLoadedRecording();
   leRoboData.initSnap();
 }
 
