@@ -20,13 +20,7 @@ public:
     void intakeEject(double slowdown = 0);
     void intakeStop();
     void tankHalt();
-    //void startHandler()
-    //{
 
-    //    std::thread handler{&RoboStorage::tankHandler, this};
-    //    handler.detach();
-
-    //}
     int getIntakeStatus() 
     {
       if(m_intakeMotor->Get() > 0)
