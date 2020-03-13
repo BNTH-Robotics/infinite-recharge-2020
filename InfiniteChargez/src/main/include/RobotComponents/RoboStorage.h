@@ -52,6 +52,7 @@ class RoboStorage
         //Tank Handler values(unused)
         static constexpr double tankToggleUpSpeed{.6};
         static constexpr double tankToggleDownSpeed{-1.0};
+        static constexpr double tankRaiseStart{0.5};
         static constexpr double tankRaiseStop{-0.2};
         static constexpr double changeRate{0.012};
         bool manual{false};
