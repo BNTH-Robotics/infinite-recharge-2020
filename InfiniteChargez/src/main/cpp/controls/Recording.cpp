@@ -25,6 +25,7 @@ void Robot::recordActionsExec(utilities::XboxInputHandler &leInputHandler, durat
 
     if (isRecording)
     {
+        recordControllerToFile();
     }
     if (leInputHandler.getButtonYState())
     {
