@@ -10,15 +10,7 @@
         //Output tree X will switch the controlls to "Hook Mode"
         if (leInputHandler.getButtonXState())
         {
-            if(leInputHandler.getBumperLeftState())
-            {
-                std::cout << "Hook advance \n";
-                leHook.advance();
-            }
-            else
-            {
-                leHook.stop();
-            }
+            hookModeExec();
         }
         else if (leInputHandler.getTriggerLeft() > triggerIntakeTolerance)
         {
@@ -81,7 +73,15 @@
     
 void Robot::hookModeExec()
 {
-
+if(leInputHandler.getBumperLeftState())
+            {
+                std::cout << "Hook advance \n";
+                leHook.advance();
+            }
+            else
+            {
+                leHook.stop();
+            }
 }
     
 
