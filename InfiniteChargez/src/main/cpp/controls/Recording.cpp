@@ -31,17 +31,17 @@ void Robot::recordActionsExec(utilities::XboxInputHandler &leInputHandler, durat
 
 void Robot::recordingInit()
 {
-        isRecording = true;
-        recordingEnabled = false;
-        std::cout << m_chooser.GetSelected() << '\n';
-        m_leRecordScribe.stopLoadedRecording();
-        if (m_recordFile.is_open())
-        {
-            m_recordFile.close();
-        }
-        m_recordFile.clear();
-        m_recordFile.open(inputRecordFileName + m_chooser.GetSelected());
-        m_leRecordScribe.designateFile(m_recordFile);
+    isRecording = true;
+    recordingEnabled = false;
+    std::cout << m_chooser.GetSelected() << '\n';
+    m_leRecordScribe.stopLoadedRecording();
+    if (m_recordFile.is_open())
+    {
+        m_recordFile.close();
+    }
+    m_recordFile.clear();
+    m_recordFile.open(inputRecordFileName + m_chooser.GetSelected());
+    m_leRecordScribe.designateFile(m_recordFile);
 }
 
 void Robot::recordControllerToFile()
@@ -52,21 +52,19 @@ void Robot::recordControllerToFile()
 
 void Robot::flushRecordingToFile()
 {
-      isRecording = false;
-        assert(m_recordFile.is_open());
-        isRecording = false;
-        //duration_t meanDeltaFinal{meanDelta};
-        m_leRecordScribe.stopRecording();
-        
-        m_recordFile.close();
+    isRecording = false;
+    assert(m_recordFile.is_open());
+    isRecording = false;
+    m_leRecordScribe.stopRecording();
 
+    m_recordFile.close();
 }
 
 void Robot::resetRecordingState()
 {
-    if(m_recordFile.is_open())
+    if (m_recordFile.is_open())
     {
-    m_recordFile.close();
+        m_recordFile.close();
     }
     recordingEnabled = true;
     m_recordFile.open(inputRecordFileName + m_chooser.GetSelected());
