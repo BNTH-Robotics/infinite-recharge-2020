@@ -103,14 +103,14 @@ void Robot::TeleopInit()
 
 void Robot::TeleopPeriodic()
 {
-    duration_t delta = leRoboData.calcAndGetTimeDelta();
+    m_frameTime = leRoboData.calcAndGetTimeDelta();
 
-    leRoboData.updatePos(delta);
+    leRoboData.updatePos(m_frameTime);
     checkAndExec();
 
     leInputHandler = leController;
 
-    recordActionsExec(leInputHandler, delta);
+    recordActionsExec(leInputHandler, m_frameTime);
 }
 
 void Robot::TestPeriodic()

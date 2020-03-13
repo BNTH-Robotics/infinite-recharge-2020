@@ -156,6 +156,10 @@ class Robot : public frc::TimedRobot, public utilities::HandlesChecksAndExecs
 		void manualTankExec();
 		void regularExec();
 
+		duration_t getFrametime() {return m_frameTime;}
+
+
+		duration_t m_frameTime;
 		frc::SendableChooser<std::string> m_chooser;
 		const std::string kAutoNameDefault = "R1-DumpAndYeet";
 		const std::string kAutoNameCustom = "Yeeter McYeeterson";
