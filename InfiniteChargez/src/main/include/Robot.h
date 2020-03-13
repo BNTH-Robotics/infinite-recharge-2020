@@ -80,6 +80,7 @@ class Robot : public frc::TimedRobot, public utilities::HandlesChecksAndExecs
 		void AutonomousPeriodic() override;
 		void TeleopInit() override;
 		void TeleopPeriodic() override;
+		void TestPeriodic() override;
 
 		utilities::InputHandler& getInputHandler() {return leInputHandler;}
 	private:
@@ -87,8 +88,6 @@ class Robot : public frc::TimedRobot, public utilities::HandlesChecksAndExecs
 		bool recordingEnabled{true};
 		long double meanDelta{0};
 
-	public:
-		void TestPeriodic() override;
 	private:
 		//RobotDataPooints
 		RoboData leRoboData{leGyroscope, leAccelerometer};
