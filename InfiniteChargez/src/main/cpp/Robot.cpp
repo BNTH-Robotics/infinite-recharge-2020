@@ -22,36 +22,35 @@
 #include <cassert>
 void Robot::OdometryTests()
 {
-  //std::cout << "Built Int Acceleration X: " << leAccelerometer.GetX() << " Y: " << leAccelerometer.GetY() << '\n';
-  //std::cout << "Acceleration X: " << leGyroscope.GetAccelInstantX() << " Y: " << leGyroscope.GetAccelInstantY() << '\n';
-  //std::cout << "Z heading: " << leGyroscope.GetGyroAngleZ() << '\n';
-  //std::cout << leDifferentialOdometer.GetPose().Translation().X() << '\n';
+    //std::cout << "Built Int Acceleration X: " << leAccelerometer.GetX() << " Y: " << leAccelerometer.GetY() << '\n';
+    //std::cout << "Acceleration X: " << leGyroscope.GetAccelInstantX() << " Y: " << leGyroscope.GetAccelInstantY() << '\n';
+    //std::cout << "Z heading: " << leGyroscope.GetGyroAngleZ() << '\n';
+    //std::cout << leDifferentialOdometer.GetPose().Translation().X() << '\n';
 }
 
-Robot::Robot() : frc::TimedRobot{10_ms} 
-                 
+Robot::Robot() : frc::TimedRobot{10_ms}
+
 {
-  hookMotor.SetNeutralMode(ctre::phoenix::motorcontrol::NeutralMode::Brake);
-  tankMotor.SetNeutralMode(ctre::phoenix::motorcontrol::NeutralMode::Brake);
-  
+    hookMotor.SetNeutralMode(ctre::phoenix::motorcontrol::NeutralMode::Brake);
+    tankMotor.SetNeutralMode(ctre::phoenix::motorcontrol::NeutralMode::Brake);
 }
 
 void Robot::RobotInit()
 {
-  m_chooser.SetDefaultOption("Emergency-Forward and Stop", "Emergency");
-  m_chooser.AddOption("1-DumpAndYeet", "R1-DumpAndYeet.rcd");
-  m_chooser.AddOption("2-DumpAndYeet", "R2-DumpAndYeet.rcd");
-  m_chooser.AddOption("3-DumpAndYeet", "R3-DumpAndYeet.rcd");
+    m_chooser.SetDefaultOption("Emergency-Forward and Stop", "Emergency");
+    m_chooser.AddOption("1-DumpAndYeet", "R1-DumpAndYeet.rcd");
+    m_chooser.AddOption("2-DumpAndYeet", "R2-DumpAndYeet.rcd");
+    m_chooser.AddOption("3-DumpAndYeet", "R3-DumpAndYeet.rcd");
 
-  m_chooser.AddOption("1-CrossTheLine", "R1-CrossTheLine.rcd");
-  m_chooser.AddOption("2-CrossTheLine", "R2-CrossTheLine.rcd");
-  m_chooser.AddOption("3-CrossTheLine", "R3-CrossTheLine.rcd");
-  m_chooser.AddOption("Emergency-Forward and Stop", "Emergency");
+    m_chooser.AddOption("1-CrossTheLine", "R1-CrossTheLine.rcd");
+    m_chooser.AddOption("2-CrossTheLine", "R2-CrossTheLine.rcd");
+    m_chooser.AddOption("3-CrossTheLine", "R3-CrossTheLine.rcd");
+    m_chooser.AddOption("Emergency-Forward and Stop", "Emergency");
 
-  driveMotorsLeft.SetInverted(true);
-  driveMotorsRight.SetInverted(true);
+    driveMotorsLeft.SetInverted(true);
+    driveMotorsRight.SetInverted(true);
 
-  frc::SmartDashboard::PutData("Auto Modes", &m_chooser);
+    frc::SmartDashboard::PutData("Auto Modes", &m_chooser);
 }
 
 void Robot::RobotPeriodic()
@@ -60,34 +59,33 @@ void Robot::RobotPeriodic()
 
 void Robot::AutonomousInit()
 {
-  m_leRecordScribe.stopLoadedRecording();
-  std::string chosen{m_chooser.GetSelected()};
-  if (chosen == "Emergency")
-  {
-    leDrive.setMovementMap(utilities::Pair2D<double>{0.5, 0.0});
-    std::this_thread::sleep_for(std::chrono::seconds(1));
-    leDrive.setMovementMap(utilities::Pair2D<double>{0.0, 0.0});
-  }
-  else
-  {
-  
+    m_leRecordScribe.stopLoadedRecording();
+    std::string chosen{m_chooser.GetSelected()};
+    if (chosen == "Emergency")
+    {
+        leDrive.setMovementMap(utilities::Pair2D<double>{0.5, 0.0});
+        std::this_thread::sleep_for(std::chrono::seconds(1));
+        leDrive.setMovementMap(utilities::Pair2D<double>{0.0, 0.0});
+    }
+    else
+    {
 
-  std::cout << m_chooser.GetSelected() << '\n';
-  if (m_recordReadFile.is_open())
-  {
-    std::cout << "Closed Open File \n";
-    m_recordReadFile.close();
-  }
-  m_recordReadFile.clear();
-  m_recordReadFile.open(inputRecordFileName + m_chooser.GetSelected());
-  m_recordReadFile.seekg(0, std::ios::beg);
-  assert(m_recordReadFile.is_open());
+        std::cout << m_chooser.GetSelected() << '\n';
+        if (m_recordReadFile.is_open())
+        {
+            std::cout << "Closed Open File \n";
+            m_recordReadFile.close();
+        }
+        m_recordReadFile.clear();
+        m_recordReadFile.open(inputRecordFileName + m_chooser.GetSelected());
+        m_recordReadFile.seekg(0, std::ios::beg);
+        assert(m_recordReadFile.is_open());
 
-  m_leRecordScribe.loadRecording(m_recordReadFile);
-  m_leRecordScribe.playLoadedRecordingToAndExec(this);
+        m_leRecordScribe.loadRecording(m_recordReadFile);
+        m_leRecordScribe.playLoadedRecordingToAndExec(this);
 
-  m_autoSelected = m_chooser.GetSelected();
-  }
+        m_autoSelected = m_chooser.GetSelected();
+    }
 }
 
 void Robot::AutonomousPeriodic()
@@ -96,33 +94,32 @@ void Robot::AutonomousPeriodic()
 
 void Robot::TeleopInit()
 {
-  
-  m_leRecordScribe.stopLoadedRecording();
-  leRoboData.initSnap();
+
+    m_leRecordScribe.stopLoadedRecording();
+    leRoboData.initSnap();
 }
 
 void Robot::TeleopPeriodic()
 {
-  duration_t delta = leRoboData.calcAndGetTimeDelta();
+    duration_t delta = leRoboData.calcAndGetTimeDelta();
 
-  leRoboData.updatePos(delta);
-  OdometryTests();
-  checkAndExec();
+    leRoboData.updatePos(delta);
+    OdometryTests();
+    checkAndExec();
 
-  leInputHandler = leController;
+    leInputHandler = leController;
 
-  recordActionsExec(leInputHandler, delta);
+    recordActionsExec(leInputHandler, delta);
 }
 
 void Robot::TestPeriodic()
 {
-  OdometryTests();
+    OdometryTests();
 }
-
 
 #ifndef RUNNING_FRC_TESTS
 int main()
 {
-  return frc::StartRobot<Robot>();
+    return frc::StartRobot<Robot>();
 }
 #endif
