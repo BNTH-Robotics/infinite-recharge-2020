@@ -114,6 +114,7 @@ class Robot : public frc::TimedRobot, public utilities::HandlesChecksAndExecs
 		//Recording Utilities
 		utilities::InputRecordAndPlay m_leRecordScribe{};
 		void recordActionsExec(utilities::XboxInputHandler &leInputHandler);
+		void recordActionsExec(utilities::XboxInputHandler &leInputHandler, duration_t delta);
 		bool isRecording{false}; //Really hacky, will remain until the deeper WPLIB api documentation can be discovered *Indiana Jones Music*
 		bool recordingEnabled{true};
 		long double meanDelta{0};
@@ -124,7 +125,6 @@ class Robot : public frc::TimedRobot, public utilities::HandlesChecksAndExecs
 
 		//Input checking funcitons
 		static constexpr double triggerIntakeTolerance{0.9};
-		void recordActionsExec(utilities::XboxInputHandler &leInputHandler, duration_t delta);
 		//Declare Time Variables
 		frc::SendableChooser<std::string> m_chooser;
 		const std::string kAutoNameDefault = "R1-DumpAndYeet";
