@@ -17,7 +17,6 @@ public:
 
     void setMovementMap(utilities::Pair2D<double> &&movementMap)
     {
-
         m_leftMotors->Set(std::clamp(movementMap.y - movementMap.x, -1.0, 1.0));
         m_rightMotors->Set(std::clamp(movementMap.y + movementMap.x, -1.0, 1.0));//FIGURE OUT WHY A NEGATIVE IS NEEDED!!!!
     };
@@ -26,6 +25,5 @@ public:
 private:
     controller_t *m_leftMotors;
     controller_t *m_rightMotors;
-
 };
 #endif
