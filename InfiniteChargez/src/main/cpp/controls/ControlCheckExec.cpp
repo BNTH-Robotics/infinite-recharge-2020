@@ -7,7 +7,6 @@
 
 void Robot::checkAndExec()
 {
-    //Output tree X will switch the controlls to "Hook Mode"
     if (leInputHandler.getButtonXState())
     {
         hookModeExec();
@@ -45,14 +44,7 @@ void Robot::regularExec()
 {
     if (leInputHandler.getBumperLeftState())
     {
-        //if(!(leStorage.getIntakeStatus() == -1))
-        //{
         leStorage.intakeIn(leInputHandler.getTriggerRight());
-        //}
-        //else if (leStorage.getIntakeStatus() == -1)
-        //{
-        //leStorage.intakeStop();
-        //}
     }
     else if (leInputHandler.getBumperRightState())
     {
