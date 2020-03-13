@@ -42,9 +42,9 @@ class Robot : public frc::TimedRobot, public utilities::HandlesChecksAndExecs
 		using handler_t = utilities::XboxInputHandler;
 
 		using driveMotor_t = ctre::phoenix::motorcontrol::can::WPI_VictorSPX;
-		using intakeMotor_t = driveMotor_t;
-		using storageMotor_t = driveMotor_t;
-		using hookMotor_t = driveMotor_t;
+		using intakeMotor_t = ctre::phoenix::motorcontrol::can::WPI_VictorSPX;
+		using storageMotor_t = ctre::phoenix::motorcontrol::can::WPI_VictorSPX;
+		using hookMotor_t = ctre::phoenix::motorcontrol::can::WPI_VictorSPX;
 
 		using controller_t = frc::XboxController;
 
