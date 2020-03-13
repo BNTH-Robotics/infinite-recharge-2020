@@ -67,7 +67,6 @@ class Robot : public frc::TimedRobot, public utilities::HandlesChecksAndExecs
 		static constexpr int portTank{7};
 		static constexpr int portHook{8};
 
-
 	public:
 		Robot();
 		void checkAndExec();
@@ -81,8 +80,6 @@ class Robot : public frc::TimedRobot, public utilities::HandlesChecksAndExecs
 		void TestPeriodic() override;
 
 		utilities::InputHandler& getInputHandler() {return leInputHandler;}
-	private:
-
 	private:
 		RoboData leRoboData{leGyroscope, leAccelerometer};
 		RoboDrive leDrive{driveMotorsLeft, driveMotorsRight};
@@ -107,7 +104,6 @@ class Robot : public frc::TimedRobot, public utilities::HandlesChecksAndExecs
 		frc::SpeedControllerGroup driveMotorsLeft{driveMotorFrontLeft, driveMotorBackLeft};
 		frc::SpeedControllerGroup driveMotorsRight{driveMotorFrontRight, driveMotorBackRight};
 
-		//Recording Utilities
 		utilities::InputRecordAndPlay m_leRecordScribe{};
 		void recordActionsExec(utilities::XboxInputHandler &leInputHandler);
 		void recordActionsExec(utilities::XboxInputHandler &leInputHandler, duration_t delta);
