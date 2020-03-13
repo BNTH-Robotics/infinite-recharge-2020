@@ -151,6 +151,7 @@ class Robot : public frc::TimedRobot, public utilities::HandlesChecksAndExecs
 		void recordingInit();
 		void resetRecordingState();
 		void recordControllerToFile();
+		void flushRecordingToFile();
 
 		void hookModeExec();
 		void manualTankExec();

@@ -29,15 +29,6 @@ void Robot::recordActionsExec(utilities::XboxInputHandler &leInputHandler, durat
     }
     if (leInputHandler.getButtonYState())
     {
-        if(m_recordFile.is_open())
-        {
-        m_recordFile.close();
-        }
-        recordingEnabled = true;
-        m_recordFile.open(inputRecordFileName + m_chooser.GetSelected());
-
-
-        std::cout << "Recording Resetted" << '\n';
     }
 }
 
@@ -60,4 +51,16 @@ void Robot::recordControllerToFile()
 {
     std::cout << "recording" << '\n';
     m_leRecordScribe.snapFromAndWrite(this, getFrametime());
+}
+
+void Robot::flushRecordingToFile()
+{
+    if(m_recordFile.is_open())
+    {
+    m_recordFile.close();
+    }
+    recordingEnabled = true;
+    m_recordFile.open(inputRecordFileName + m_chooser.GetSelected());
+
+    std::cout << "Recording Resetted" << '\n';
 }
