@@ -6,6 +6,12 @@
 #include <frc/SpeedController.h>
 
 #include <algorithm>
+/**
+ * Better DifferentialDrive than WPILib because DifferentialDrive is stupidly sensitive
+ * Last year everything had to be halved to be usable.
+ * This Differential Drive algorithm allows full speed while being controlled
+ * Ahhh... The power of software... ehh?
+ */
 class RoboDrive
 {
     using controller_t = frc::SpeedController;
@@ -15,6 +21,11 @@ public:
     {
     }
 
+    /**
+     * The movement map is a simple way of storing movement information
+     * The y axis controls how fast the robot is going forwards/backwards
+     * The x axis controls how fast the rotation of the robot is in either direction
+     */
     void setMovementMap(utilities::Pair2D<double> &&movementMap)
     {
         m_leftMotors->Set(std::clamp(movementMap.y - movementMap.x, -1.0, 1.0));
