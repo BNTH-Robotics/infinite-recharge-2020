@@ -106,7 +106,6 @@ void Robot::TeleopPeriodic()
     duration_t delta = leRoboData.calcAndGetTimeDelta();
 
     leRoboData.updatePos(delta);
-    OdometryTests();
     checkAndExec();
 
     leInputHandler = leController;
@@ -116,7 +115,6 @@ void Robot::TeleopPeriodic()
 
 void Robot::TestPeriodic()
 {
-    //OdometryTests();
 }
 
 void Robot::OdometryTests()
