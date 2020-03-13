@@ -20,16 +20,8 @@
 #include <thread>
 
 #include <cassert>
-void Robot::OdometryTests()
-{
-    //std::cout << "Built Int Acceleration X: " << leAccelerometer.GetX() << " Y: " << leAccelerometer.GetY() << '\n';
-    //std::cout << "Acceleration X: " << leGyroscope.GetAccelInstantX() << " Y: " << leGyroscope.GetAccelInstantY() << '\n';
-    //std::cout << "Z heading: " << leGyroscope.GetGyroAngleZ() << '\n';
-    //std::cout << leDifferentialOdometer.GetPose().Translation().X() << '\n';
-}
 
 Robot::Robot() : frc::TimedRobot{10_ms}
-
 {
     hookMotor.SetNeutralMode(ctre::phoenix::motorcontrol::NeutralMode::Brake);
     tankMotor.SetNeutralMode(ctre::phoenix::motorcontrol::NeutralMode::Brake);
@@ -69,7 +61,6 @@ void Robot::AutonomousInit()
     }
     else
     {
-
         std::cout << m_chooser.GetSelected() << '\n';
         if (m_recordReadFile.is_open())
         {
@@ -114,7 +105,15 @@ void Robot::TeleopPeriodic()
 
 void Robot::TestPeriodic()
 {
-    OdometryTests();
+    //OdometryTests();
+}
+
+void Robot::OdometryTests()
+{
+    //std::cout << "Built Int Acceleration X: " << leAccelerometer.GetX() << " Y: " << leAccelerometer.GetY() << '\n';
+    //std::cout << "Acceleration X: " << leGyroscope.GetAccelInstantX() << " Y: " << leGyroscope.GetAccelInstantY() << '\n';
+    //std::cout << "Z heading: " << leGyroscope.GetGyroAngleZ() << '\n';
+    //std::cout << leDifferentialOdometer.GetPose().Translation().X() << '\n';
 }
 
 #ifndef RUNNING_FRC_TESTS
