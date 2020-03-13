@@ -82,9 +82,6 @@ class Robot : public frc::TimedRobot, public utilities::HandlesChecksAndExecs
 
 		utilities::InputHandler& getInputHandler() {return leInputHandler;}
 	private:
-		bool isRecording{false}; //Really hacky, will remain until the deeper WPLIB api documentation can be discovered *Indiana Jones Music*
-		bool recordingEnabled{true};
-		long double meanDelta{0};
 
 	private:
 		//RobotDataPooints
@@ -117,6 +114,10 @@ class Robot : public frc::TimedRobot, public utilities::HandlesChecksAndExecs
 		//Recording Utilities
 		utilities::InputRecordAndPlay m_leRecordScribe{};
 		void recordActionsExec(utilities::XboxInputHandler &leInputHandler);
+		bool isRecording{false}; //Really hacky, will remain until the deeper WPLIB api documentation can be discovered *Indiana Jones Music*
+		bool recordingEnabled{true};
+		long double meanDelta{0};
+
 		void hookModeExec();
 		void manualTankExec();
 		void regularExec();
