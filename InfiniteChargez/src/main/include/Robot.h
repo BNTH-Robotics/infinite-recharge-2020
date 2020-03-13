@@ -36,9 +36,6 @@
 class Robot : public frc::TimedRobot, public utilities::HandlesChecksAndExecs
 {
 	private:
-		const std::string inputRecordFileName{"/home/lvuser/"};
-		std::ofstream m_recordFile{};
-		std::ifstream m_recordReadFile{};
 		using handler_t = utilities::XboxInputHandler;
 
 		using driveMotor_t = ctre::phoenix::motorcontrol::can::WPI_VictorSPX;
@@ -140,8 +137,11 @@ class Robot : public frc::TimedRobot, public utilities::HandlesChecksAndExecs
 		frc::SpeedControllerGroup driveMotorsLeft{driveMotorFrontLeft, driveMotorBackLeft};
 		frc::SpeedControllerGroup driveMotorsRight{driveMotorFrontRight, driveMotorBackRight};
 
-		//Internal functions
 		utilities::InputRecordAndPlay m_leRecordScribe{};
+		const std::string inputRecordFileName{"/home/lvuser/"};
+		std::ofstream m_recordFile{};
+		std::ifstream m_recordReadFile{};
+		//Internal functions
 		void recordActionsExec(utilities::XboxInputHandler &leInputHandler);
 		void recordActionsExec(utilities::XboxInputHandler &leInputHandler, duration_t delta);
 		static constexpr double triggerIntakeTolerance{0.9};
