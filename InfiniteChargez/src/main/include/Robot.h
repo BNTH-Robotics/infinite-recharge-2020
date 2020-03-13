@@ -84,7 +84,6 @@ class Robot : public frc::TimedRobot, public utilities::HandlesChecksAndExecs
 	private:
 
 	private:
-		//RobotDataPooints
 		RoboData leRoboData{leGyroscope, leAccelerometer};
 		RoboDrive leDrive{driveMotorsLeft, driveMotorsRight};
 		RoboStorage leStorage{intakeMotor, tankMotor};
@@ -92,7 +91,6 @@ class Robot : public frc::TimedRobot, public utilities::HandlesChecksAndExecs
 
 		controller_t leController{controllerPort}; //Of epic dankness
 		handler_t leInputHandler{};
-		//Declare Motors
 		driveMotor_t driveMotorFrontLeft{portDriveFrontLeft};
 		driveMotor_t driveMotorFrontRight{portDriveFrontRight};
 		driveMotor_t driveMotorBackLeft{portDriveBackLeft};
@@ -103,11 +101,9 @@ class Robot : public frc::TimedRobot, public utilities::HandlesChecksAndExecs
 		storageMotor_t tankMotor{portTank};
 
 		hookMotor_t hookMotor{portHook};
-		//Non-motor components
 		gyroscope_t leGyroscope{};
 		accelerometer_t leAccelerometer{};
 
-		//Declare Motor Groups
 		frc::SpeedControllerGroup driveMotorsLeft{driveMotorFrontLeft, driveMotorBackLeft};
 		frc::SpeedControllerGroup driveMotorsRight{driveMotorFrontRight, driveMotorBackRight};
 
@@ -123,9 +119,7 @@ class Robot : public frc::TimedRobot, public utilities::HandlesChecksAndExecs
 		void manualTankExec();
 		void regularExec();
 
-		//Input checking funcitons
 		static constexpr double triggerIntakeTolerance{0.9};
-		//Declare Time Variables
 		frc::SendableChooser<std::string> m_chooser;
 		const std::string kAutoNameDefault = "R1-DumpAndYeet";
 		const std::string kAutoNameCustom = "Yeeter McYeeterson";
