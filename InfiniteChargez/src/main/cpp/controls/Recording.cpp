@@ -12,24 +12,20 @@ void Robot::recordActionsExec(utilities::XboxInputHandler &leInputHandler, durat
     {
         recordingInit();
     }
+
     if (leInputHandler.getButtonBackState() && isRecording) //Do not use elseif!!! If is for better response!!!
     {
-        isRecording = false;
-        assert(m_recordFile.is_open());
-        isRecording = false;
-        //duration_t meanDeltaFinal{meanDelta};
-        m_leRecordScribe.stopRecording();
-        
-        m_recordFile.close();
+        flushRecordingToFile();
     }
 
     if (isRecording)
     {
         recordControllerToFile();
     }
+
     if (leInputHandler.getButtonYState())
     {
-        flushRecordingToFile();
+        resetRecordingState();
     }
 }
 
@@ -56,6 +52,14 @@ void Robot::recordControllerToFile()
 
 void Robot::flushRecordingToFile()
 {
+      isRecording = false;
+        assert(m_recordFile.is_open());
+        isRecording = false;
+        //duration_t meanDeltaFinal{meanDelta};
+        m_leRecordScribe.stopRecording();
+        
+        m_recordFile.close();
+
 }
 
 void Robot::resetRecordingState()
@@ -68,5 +72,4 @@ void Robot::resetRecordingState()
     m_recordFile.open(inputRecordFileName + m_chooser.GetSelected());
 
     std::cout << "Recording Resetted" << '\n';
-
 }
