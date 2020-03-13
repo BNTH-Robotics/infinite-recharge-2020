@@ -14,10 +14,7 @@
         }
         else if (leInputHandler.getTriggerLeft() > triggerIntakeTolerance)
         {
-            {
-                double rightJoystickY = -leInputHandler.getJoystickRight().y;
-                leStorage.setTankMotorManual(rightJoystickY);
-            }
+           manualTankExec(); 
         }
         else
         {
@@ -82,6 +79,12 @@ if(leInputHandler.getBumperLeftState())
             {
                 leHook.stop();
             }
+}
+
+void Robot::manualTankExec()
+{
+    double rightJoystickY = -leInputHandler.getJoystickRight().y;
+    leStorage.setTankMotorManual(rightJoystickY);
 }
     
 
