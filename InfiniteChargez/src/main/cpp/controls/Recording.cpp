@@ -10,7 +10,8 @@ void Robot::recordActionsExec(utilities::XboxInputHandler &leInputHandler, durat
 {
     if (leInputHandler.getButtonStartState() && recordingEnabled)
     {
-            }
+        recordingInit();
+    }
     if (leInputHandler.getButtonBackState() && isRecording) //Do not use elseif!!! If is for better response!!!
     {
         isRecording = false;
@@ -24,9 +25,6 @@ void Robot::recordActionsExec(utilities::XboxInputHandler &leInputHandler, durat
 
     if (isRecording)
     {
-        std::cout << "recording" << '\n';
-        meanDelta = (meanDelta + delta.count()) / 2;
-        m_leRecordScribe.snapFromAndWrite(this, delta);
     }
     if (leInputHandler.getButtonYState())
     {
@@ -56,5 +54,11 @@ void Robot::recordingInit()
         m_recordFile.clear();
         m_recordFile.open(inputRecordFileName + m_chooser.GetSelected());
         m_leRecordScribe.designateFile(m_recordFile);
+}
 
+void Robot::recordControllerToFile()
+{
+    std::cout << "recording" << '\n';
+    meanDelta = (meanDelta + getFrametime.count()) / 2;
+    m_leRecordScribe.snapFromAndWrite(this, delta);
 }
