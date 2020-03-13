@@ -18,7 +18,32 @@
         }
         else
         {
-            if (leInputHandler.getBumperLeftState())
+            regularExec();
+        }
+    }
+    
+void Robot::hookModeExec()
+{
+if(leInputHandler.getBumperLeftState())
+            {
+                std::cout << "Hook advance \n";
+                leHook.advance();
+            }
+            else
+            {
+                leHook.stop();
+            }
+}
+
+void Robot::manualTankExec()
+{
+    double rightJoystickY = -leInputHandler.getJoystickRight().y;
+    leStorage.setTankMotorManual(rightJoystickY);
+}
+
+void Robot::regularExec()
+{
+if (leInputHandler.getBumperLeftState())
             {
                 //if(!(leStorage.getIntakeStatus() == -1))
                 //{
@@ -65,26 +90,6 @@
 
                 leDrive.setMovementMap(leInputHandler.getJoystickLeft());
             }
-        }
-    }
-    
-void Robot::hookModeExec()
-{
-if(leInputHandler.getBumperLeftState())
-            {
-                std::cout << "Hook advance \n";
-                leHook.advance();
-            }
-            else
-            {
-                leHook.stop();
-            }
-}
-
-void Robot::manualTankExec()
-{
-    double rightJoystickY = -leInputHandler.getJoystickRight().y;
-    leStorage.setTankMotorManual(rightJoystickY);
 }
     
 
