@@ -6,17 +6,11 @@
     void RoboStorage::raise()
     {
         m_tankMotor->Set(tankToggleUpSpeed);
-
-        //manual = false;
-        //m_raising = true;
-        //std::cout << "raise\n";
     }
 
     void RoboStorage::lower()
     {
         m_tankMotor->Set(tankToggleDownSpeed);
-        //manual = false;
-        //m_raising = false;
     }
 
     void RoboStorage::tankHalt()
@@ -26,7 +20,6 @@
 
     void RoboStorage::intakeIn(double slowdown)
     {
-        std::cout << "in\n";
         m_intakeMotor->Set(intakeInSpeed * (1 - slowdown));
     }
 
