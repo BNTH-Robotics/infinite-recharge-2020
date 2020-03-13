@@ -69,8 +69,15 @@ class Robot : public frc::TimedRobot, public utilities::HandlesChecksAndExecs
 
 	public:
 		Robot();
+		/**
+		 * Controls robot's motor depending on the state of it's input handler
+		 * i.e. basic input checking code
+		 */
 		void checkAndExec();
 		void OdometryTests();
+		/**
+		 * First function called after the Robot code boots
+		 */
 		void RobotInit() override;
 		/**
 		 * This function is called every robot packet, no matter the mode. Use
@@ -81,19 +88,40 @@ class Robot : public frc::TimedRobot, public utilities::HandlesChecksAndExecs
 		 * LiveWindow and SmartDashboard integrated updating.
 		 */
 		void RobotPeriodic() override;
+		/**
+		 * First function run when autonomous is enabled
+		 */
 		void AutonomousInit() override;
+		/**
+		 * Called at regular intervals when autonomous is enabled. Stops being called
+		 * when teleop is disabled. The interval is set in the Robot's constructor function.
+		 */
 		void AutonomousPeriodic() override;
+		/**
+		 * First function called when teleop is enabled
+		 */
 		void TeleopInit() override;
+		/**
+		 * Called at regular intervals when teleop is enabled. Stops being called
+		 * when teleop is disabled. The interval is set in the Robot's constructor function
+		 */
 		void TeleopPeriodic() override;
+		/**
+		 * Called at regular intervals when test mode is enabled. Stops being called
+		 * when teleop is disabled. The interval is set in the Robot's constructor function
+		 */
 		void TestPeriodic() override;
 
+		//Accessor function
 		utilities::InputHandler& getInputHandler() {return leInputHandler;}
 	private:
+		//These component classes represent distinct parts of the Robot.
 		RoboData leRoboData{leGyroscope, leAccelerometer};
 		RoboDrive leDrive{driveMotorsLeft, driveMotorsRight};
 		RoboStorage leStorage{intakeMotor, tankMotor};
 		RoboHook leHook{hookMotor};
 
+		//Hardware Stuff
 		controller_t leController{controllerPort}; //Of epic dankness
 		handler_t leInputHandler{};
 		driveMotor_t driveMotorFrontLeft{portDriveFrontLeft};
@@ -112,9 +140,11 @@ class Robot : public frc::TimedRobot, public utilities::HandlesChecksAndExecs
 		frc::SpeedControllerGroup driveMotorsLeft{driveMotorFrontLeft, driveMotorBackLeft};
 		frc::SpeedControllerGroup driveMotorsRight{driveMotorFrontRight, driveMotorBackRight};
 
+		//Internal functions
 		utilities::InputRecordAndPlay m_leRecordScribe{};
 		void recordActionsExec(utilities::XboxInputHandler &leInputHandler);
 		void recordActionsExec(utilities::XboxInputHandler &leInputHandler, duration_t delta);
+		static constexpr double triggerIntakeTolerance{0.9};
 		bool isRecording{false}; //Really hacky, will remain until the deeper WPLIB api documentation can be discovered *Indiana Jones Music*
 		bool recordingEnabled{true};
 		long double meanDelta{0};
@@ -123,7 +153,6 @@ class Robot : public frc::TimedRobot, public utilities::HandlesChecksAndExecs
 		void manualTankExec();
 		void regularExec();
 
-		static constexpr double triggerIntakeTolerance{0.9};
 		frc::SendableChooser<std::string> m_chooser;
 		const std::string kAutoNameDefault = "R1-DumpAndYeet";
 		const std::string kAutoNameCustom = "Yeeter McYeeterson";
