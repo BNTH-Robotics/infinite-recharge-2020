@@ -79,5 +79,9 @@
         }
     }
     
+void Robot::hookModeExec()
+{
+
+}
     
 

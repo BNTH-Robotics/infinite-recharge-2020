@@ -120,6 +120,9 @@ class Robot : public frc::TimedRobot, public utilities::HandlesChecksAndExecs
 		//Recording Utilities
 		utilities::InputRecordAndPlay m_leRecordScribe{};
 		void recordActionsExec(utilities::XboxInputHandler &leInputHandler);
+		void hookModeExec();
+		void manualTankExec();
+		void regularExec();
 
 		//Input checking funcitons
 		static constexpr double triggerIntakeTolerance{0.9};
