@@ -44,7 +44,6 @@ void Robot::recordingInit()
 {
     isRecording = true;
         recordingEnabled = false;
-        meanDelta = getFrametime().count();
         std::cout << m_chooser.GetSelected() << '\n';
         m_leRecordScribe.stopLoadedRecording();
         if (m_recordFile.is_open())
@@ -59,6 +58,5 @@ void Robot::recordingInit()
 void Robot::recordControllerToFile()
 {
     std::cout << "recording" << '\n';
-    meanDelta = (meanDelta + getFrametime.count()) / 2;
-    m_leRecordScribe.snapFromAndWrite(this, delta);
+    m_leRecordScribe.snapFromAndWrite(this, getFrametime());
 }
