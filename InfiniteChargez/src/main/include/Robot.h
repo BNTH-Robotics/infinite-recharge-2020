@@ -39,24 +39,22 @@ class Robot : public frc::TimedRobot, public utilities::HandlesChecksAndExecs
 		const std::string inputRecordFileName{"/home/lvuser/"};
 		std::ofstream m_recordFile{};
 		std::ifstream m_recordReadFile{};
-		//Configuration constants will go here until a configuration system can be set up
+		using handler_t = utilities::XboxInputHandler;
+
 		using driveMotor_t = ctre::phoenix::motorcontrol::can::WPI_VictorSPX;
 		using intakeMotor_t = driveMotor_t;
 		using storageMotor_t = driveMotor_t;
 		using hookMotor_t = driveMotor_t;
 
-
 		using controller_t = frc::XboxController;
-		//Automation Type Aliases
+
 		using accelerometer_t = frc::BuiltInAccelerometer;
 		using gyroscope_t = frc::ADIS16448_IMU;
 
-		//Chrono Alisases
 		using clock_t = std::chrono::steady_clock;
 		using timePoint_t = std::chrono::steady_clock::time_point;
 		using duration_t = std::chrono::duration<double>;
 
-		using handler_t = utilities::XboxInputHandler;
 	private:
 		static constexpr int controllerPort{0};
 		static constexpr int leJoystickLeftPort{0};
