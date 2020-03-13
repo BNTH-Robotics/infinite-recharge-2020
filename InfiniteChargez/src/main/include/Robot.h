@@ -148,6 +148,10 @@ class Robot : public frc::TimedRobot, public utilities::HandlesChecksAndExecs
 		bool recordingEnabled{true};
 		long double meanDelta{0};
 
+		void recordingInit();
+		void resetRecordingState();
+		void recordControllerToFile();
+
 		void hookModeExec();
 		void manualTankExec();
 		void regularExec();
