@@ -8,7 +8,9 @@ Welcome to Arturita-Code's documentation!
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
+   :caption: Line by Line Commmentary:
+   line-by-line-commentary/index
+   
 
 
 
